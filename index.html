@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guilherme Oliveira - Desenvolvedor Backend. Python, JavaScript, APIs RESTful e arquitetura de software.">
+    <meta name="description"
+        content="Guilherme Oliveira - Desenvolvedor Backend. Python, JavaScript, APIs RESTful e arquitetura de software.">
     <meta name="theme-color" content="#e74c3c">
     <title>Guilherme Oliveira - Desenvolvedor Backend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         * {
@@ -15,13 +21,13 @@
         }
 
         :root {
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            
+            --font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
             /* Nova paleta de gradientes laranja/vermelho */
             --gradient-primary: linear-gradient(135deg, #F03407 0%, #F08507 25%, #F05C07 50%, #F51511 75%, #F0A407 100%);
             --gradient-secondary: linear-gradient(135deg, #F05C07 0%, #F51511 50%, #F5B590 100%);
             --gradient-accent: linear-gradient(135deg, #F03407 0%, #F08507 100%);
-            
+
             /* Cores individuais da paleta */
             --color-1: #F03407;
             --color-2: #F08507;
@@ -29,7 +35,7 @@
             --color-4: #F51511;
             --color-5: #F0A407;
             --color-6: #F5B590;
-            
+
             /* Light mode */
             --bg-light: #f5f5f7;
             --bg-light-2: #ffffff;
@@ -38,20 +44,22 @@
             --accent: #F03407;
             --accent-light: #F034071a;
             --border-light: #e0e0e0;
-            
+
             /* Dark mode */
             --bg-dark: #1a1a1f;
             --bg-dark-2: #2a2a2f;
             --text-light: #f0f0f0;
             --text-secondary-dark: #b8b8c8;
             --border-dark: rgba(240, 52, 7, 0.1);
-            
+
             --radius-md: 0.5rem;
             --radius-lg: 0.75rem;
             --radius-full: 9999px;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: var(--font-family);
@@ -457,6 +465,25 @@
             border-color: transparent;
         }
 
+        /* Project Subtitles & Layout */
+        .project-subtitle {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        body.dark-mode .project-subtitle {
+            color: var(--text-light);
+            border-bottom-color: var(--border-dark);
+        }
+
         /* Project Cards */
         .project-card {
             background: var(--bg-light-2);
@@ -476,6 +503,7 @@
         }
 
         .project-card:hover {
+            transform: translateY(-4px);
             box-shadow: 0 6px 20px rgba(240, 52, 7, 0.15);
         }
 
@@ -486,14 +514,22 @@
         .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 1rem;
             margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-title-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
         }
 
         .project-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text-dark);
         }
 
@@ -501,10 +537,102 @@
             color: var(--text-light);
         }
 
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-badge.online {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .status-badge.production {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        body.dark-mode .status-badge.online {
+            background-color: rgba(46, 204, 113, 0.15);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+
+        body.dark-mode .status-badge.production {
+            background-color: rgba(52, 152, 219, 0.15);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .pulsing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: currentColor;
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            animation: pulse-dot-green 1.5s infinite;
+        }
+
+        .status-badge.production .pulsing-dot {
+            box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+            animation: pulse-dot-blue 1.5s infinite;
+        }
+
+        @keyframes pulse-dot-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.5);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 5px rgba(46, 204, 113, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+
+        @keyframes pulse-dot-blue {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.5);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 5px rgba(52, 152, 219, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+            }
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
         .project-link {
-            color: var(--accent);
+            color: var(--text-secondary);
+            background: var(--bg-light-2);
+            border: 1px solid var(--border-light);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
@@ -512,13 +640,25 @@
             white-space: nowrap;
             padding: 0.35rem 0.75rem;
             border-radius: var(--radius-md);
-            border: 1px solid transparent;
+        }
+
+        body.dark-mode .project-link {
+            color: var(--text-secondary-dark);
+            background: var(--bg-dark-2);
+            border-color: var(--border-dark);
         }
 
         .project-link:hover {
+            color: var(--accent);
             background: var(--accent-light);
             border-color: var(--accent);
-            gap: 0.6rem;
+            transform: translateY(-1px);
+        }
+
+        body.dark-mode .project-link:hover {
+            color: var(--color-2);
+            background: rgba(240, 133, 7, 0.15);
+            border-color: var(--color-2);
         }
 
         .project-desc {
@@ -728,6 +868,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="controls-bar">
         <button class="toggle-btn" id="langToggle" aria-label="Alternar idioma" title="Toggle Language">
@@ -743,26 +884,36 @@
         <aside class="sidebar">
             <h1>Guilherme<br>Oliveira</h1>
             <p class="subtitle" data-pt="Desenvolvedor Backend" data-en="Backend Developer">Desenvolvedor Backend</p>
-            <p class="tagline" data-pt="APIs escaláveis e otimizadas" data-en="Scalable & optimized APIs">APIs escaláveis e otimizadas</p>
+            <p class="tagline" data-pt="APIs escaláveis e otimizadas" data-en="Scalable & optimized APIs">APIs
+                escaláveis e otimizadas</p>
 
             <div class="contact-info">
-                <p><i class="bi bi-envelope"></i> <a href="mailto:gaoliveira2077@gmail.com">gaoliveira2077@gmail.com</a></p>
+                <p><i class="bi bi-envelope"></i> <a href="mailto:gaoliveira2077@gmail.com">gaoliveira2077@gmail.com</a>
+                </p>
                 <p><i class="bi bi-telephone"></i> +55 (85) 92164-6852</p>
             </div>
 
             <nav>
                 <ul class="sidebar-nav">
-                    <li><a href="#about" class="nav-link active" data-section="about"><i class="bi bi-person-fill"></i> <span data-pt="Sobre" data-en="About">Sobre</span></a></li>
-                    <li><a href="#experience" class="nav-link" data-section="experience"><i class="bi bi-briefcase-fill"></i> <span data-pt="Experiência" data-en="Experience">Experiência</span></a></li>
-                    <li><a href="#education" class="nav-link" data-section="education"><i class="bi bi-mortarboard-fill"></i> <span data-pt="Formação" data-en="Education">Formação</span></a></li>
-                    <li><a href="#projects" class="nav-link" data-section="projects"><i class="bi bi-folder-fill"></i> <span data-pt="Projetos" data-en="Projects">Projetos</span></a></li>
+                    <li><a href="#about" class="nav-link active" data-section="about"><i class="bi bi-person-fill"></i>
+                            <span data-pt="Sobre" data-en="About">Sobre</span></a></li>
+                    <li><a href="#experience" class="nav-link" data-section="experience"><i
+                                class="bi bi-briefcase-fill"></i> <span data-pt="Experiência"
+                                data-en="Experience">Experiência</span></a></li>
+                    <li><a href="#education" class="nav-link" data-section="education"><i
+                                class="bi bi-mortarboard-fill"></i> <span data-pt="Formação"
+                                data-en="Education">Formação</span></a></li>
+                    <li><a href="#projects" class="nav-link" data-section="projects"><i class="bi bi-folder-fill"></i>
+                            <span data-pt="Projetos" data-en="Projects">Projetos</span></a></li>
                 </ul>
             </nav>
 
             <nav aria-label="Redes sociais">
                 <div class="social-links">
-                    <a href="https://github.com/guilherme-0liveira-dev/" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="https://linkedin.com/in/gaoliveira277" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://github.com/guilherme-0liveira-dev/" target="_blank" rel="noopener noreferrer"
+                        title="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="https://linkedin.com/in/gaoliveira277" target="_blank" rel="noopener noreferrer"
+                        title="LinkedIn"><i class="bi bi-linkedin"></i></a>
                 </div>
             </nav>
         </aside>
@@ -772,9 +923,18 @@
             <!-- About Section -->
             <section id="about" class="section active">
                 <div class="about-intro">
-                    <p data-pt="Desenvolvedor Backend com sólida base em Python, JavaScript e SQL, focado em construir APIs escaláveis, seguras e de alto desempenho. Experiência em integração de sistemas, automação de processos e aplicação de boas práticas de arquitetura e código limpo (Clean Code, SOLID, DDD)." data-en="Backend developer with solid foundation in Python, JavaScript and SQL, focused on building scalable, secure and high-performance APIs. Experience in systems integration, process automation and application of best practices in software architecture and clean code (Clean Code, SOLID, DDD).">Desenvolvedor Backend com sólida base em Python, JavaScript e SQL, focado em construir APIs escaláveis, seguras e de alto desempenho. Experiência em integração de sistemas, automação de processos e aplicação de boas práticas de arquitetura e código limpo (Clean Code, SOLID, DDD).</p>
-                    
-                    <p data-pt="Atuação em projetos acadêmicos e pessoais com microsserviços, controle de versão com Git/GitHub e metodologias ágeis (Scrum e Kanban). Apaixonado por otimização, aprendizado contínuo e desenvolvimento de soluções robustas e eficientes." data-en="Working on academic and personal projects with microservices, version control with Git/GitHub and agile methodologies (Scrum and Kanban). Passionate about optimization, continuous learning and development of robust and efficient solutions.">Atuação em projetos acadêmicos e pessoais com microsserviços, controle de versão com Git/GitHub e metodologias ágeis (Scrum e Kanban). Apaixonado por otimização, aprendizado contínuo e desenvolvimento de soluções robustas e eficientes.</p>
+                    <p data-pt="Desenvolvedor Backend com sólida base em Python, JavaScript e SQL, focado em construir APIs escaláveis, seguras e de alto desempenho. Experiência em integração de sistemas, automação de processos e aplicação de boas práticas de arquitetura e código limpo (Clean Code, SOLID, DDD)."
+                        data-en="Backend developer with solid foundation in Python, JavaScript and SQL, focused on building scalable, secure and high-performance APIs. Experience in systems integration, process automation and application of best practices in software architecture and clean code (Clean Code, SOLID, DDD).">
+                        Desenvolvedor Backend com sólida base em Python, JavaScript e SQL, focado em construir APIs
+                        escaláveis, seguras e de alto desempenho. Experiência em integração de sistemas, automação de
+                        processos e aplicação de boas práticas de arquitetura e código limpo (Clean Code, SOLID, DDD).
+                    </p>
+
+                    <p data-pt="Atuação em projetos acadêmicos e pessoais com microsserviços, controle de versão com Git/GitHub e metodologias ágeis (Scrum e Kanban). Apaixonado por otimização, aprendizado contínuo e desenvolvimento de soluções robustas e eficientes."
+                        data-en="Working on academic and personal projects with microservices, version control with Git/GitHub and agile methodologies (Scrum and Kanban). Passionate about optimization, continuous learning and development of robust and efficient solutions.">
+                        Atuação em projetos acadêmicos e pessoais com microsserviços, controle de versão com Git/GitHub
+                        e metodologias ágeis (Scrum e Kanban). Apaixonado por otimização, aprendizado contínuo e
+                        desenvolvimento de soluções robustas e eficientes.</p>
                 </div>
 
                 <div class="skills-section">
@@ -782,30 +942,42 @@
                     <div class="skills-grid">
                         <div class="skill-category">
                             <h5 data-pt="Linguagens" data-en="Languages">Linguagens</h5>
-                            <p>Python, JavaScript/TypeScript, Ruby</p>
+                            <p>Python, JavaScript/TypeScript, PHP, Ruby, SQL (Postgres, MySQL), HTML5/CSS3</p>
                         </div>
                         <div class="skill-category">
-                            <h5 data-pt="Frameworks" data-en="Frameworks">Frameworks</h5>
-                            <p>Flask, Express.js, Node.js, Django, Ruby on Rails, React, Vue, Angular, TailwindCSS, Next.js/nest.js</p>
+                            <h5 data-pt="Backend & APIs" data-en="Backend & APIs">Backend & APIs</h5>
+                            <p>FastAPI, Express.js, Node.js, Nest.js, Yii2 (PHP), WebSockets, REST APIs, JWT Auth, Rate
+                                Limiting</p>
                         </div>
                         <div class="skill-category">
-                            <h5 data-pt="Bancos de Dados" data-en="Databases">Bancos de Dados</h5>
-                            <p>PostgreSQL, MySQL, Redis, CockroachDB, Prisma</p>
+                            <h5 data-pt="Automação & Scraping" data-en="Automation & Scraping">Automação & Scraping</h5>
+                            <p>Playwright (Stealth), Telethon (Telegram API), BeautifulSoup4, HTTPX, Puppeteer,
+                                Proxy/Header Rotation</p>
                         </div>
                         <div class="skill-category">
-                            <h5 data-pt="Ferramentas & DevOps" data-en="Tools & DevOps">Ferramentas & DevOps</h5>
-                            <p>Docker, Git, GitHub, AWS</p>
+                            <h5 data-pt="Bancos de Dados & Cache" data-en="Databases & Caching">Bancos de Dados & Cache
+                            </h5>
+                            <p>PostgreSQL, MySQL, Redis (Caching, Queues via Celery & arq), SQLite, SQLAlchemy 2.0,
+                                Prisma ORM</p>
                         </div>
                         <div class="skill-category">
-                            <h5 data-pt="Metodologias" data-en="Methodologies">Metodologias</h5>
-                            <p>Scrum, Kanban, Code Review, CI/CD</p>
+                            <h5 data-pt="Frontend & Dashboards" data-en="Frontend & Dashboards">Frontend & Dashboards
+                            </h5>
+                            <p>Next.js 14/15, React, Tailwind CSS 3 & 4, Streamlit, Framer Motion, Recharts, Responsive
+                                Layouts</p>
+                        </div>
+                        <div class="skill-category">
+                            <h5 data-pt="DevOps & Infraestrutura" data-en="DevOps & Infrastructure">DevOps & Infra</h5>
+                            <p>Docker, Docker Compose, Nginx, Git, GitHub Actions, Linux/Bash, Vercel, Railway,
+                                Healthchecking/K8s probes</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="about-cv-wrapper">
                     <a href="assets/cv.pdf" class="cv-button" download>
-                        <i class="bi bi-download"></i> <span data-pt="BAIXAR CV COMPLETO" data-en="DOWNLOAD CV">BAIXAR CV</span>
+                        <i class="bi bi-download"></i> <span data-pt="BAIXAR CV COMPLETO" data-en="DOWNLOAD CV">BAIXAR
+                            CV</span>
                     </a>
                 </div>
             </section>
@@ -817,10 +989,15 @@
                     <article class="card">
                         <h4 data-pt="Desenvolvedor Backend" data-en="Backend Developer">Desenvolvedor Backend</h4>
                         <div class="card-meta">
-                            <span class="card-meta-accent" data-pt="Projetos Pessoais e Acadêmicos" data-en="Personal & Academic Projects">Projetos Pessoais e Acadêmicos</span>
+                            <span class="card-meta-accent" data-pt="Projetos Pessoais e Acadêmicos"
+                                data-en="Personal & Academic Projects">Projetos Pessoais e Acadêmicos</span>
                         </div>
                         <p class="card-meta" data-pt="2023 - Presente" data-en="2023 - Present">2023 - Presente</p>
-                        <p class="card-desc" data-pt="Desenvolvimento de APIs RESTful para comunicação entre sistemas e frontends. Implementação de lógica de negócios e processamento de dados com foco em performance." data-en="Development of RESTful APIs for communication between systems and frontends. Implementation of business logic and data processing with focus on performance.">Desenvolvimento de APIs RESTful para comunicação entre sistemas e frontends. Implementação de lógica de negócios e processamento de dados com foco em performance.</p>
+                        <p class="card-desc"
+                            data-pt="Desenvolvimento de APIs RESTful para comunicação entre sistemas e frontends. Implementação de lógica de negócios e processamento de dados com foco em performance."
+                            data-en="Development of RESTful APIs for communication between systems and frontends. Implementation of business logic and data processing with focus on performance.">
+                            Desenvolvimento de APIs RESTful para comunicação entre sistemas e frontends. Implementação
+                            de lógica de negócios e processamento de dados com foco em performance.</p>
                         <div class="card-tags">
                             <span class="tag">Ruby</span>
                             <span class="tag">Python</span>
@@ -833,12 +1010,18 @@
                     </article>
 
                     <article class="card">
-                        <h4 data-pt="Desenvolvimento Full Stack" data-en="Full Stack Development">Desenvolvimento Full Stack</h4>
+                        <h4 data-pt="Desenvolvimento Full Stack" data-en="Full Stack Development">Desenvolvimento Full
+                            Stack</h4>
                         <div class="card-meta">
-                            <span class="card-meta-accent" data-pt="Projetos Acadêmicos" data-en="Academic Projects">Projetos Acadêmicos</span>
+                            <span class="card-meta-accent" data-pt="Projetos Acadêmicos"
+                                data-en="Academic Projects">Projetos Acadêmicos</span>
                         </div>
                         <p class="card-meta" data-pt="2023 - Presente" data-en="2023 - Present">2023 - Presente</p>
-                        <p class="card-desc" data-pt="Criação e otimização de modelos relacionais e consultas SQL. Integração com serviços externos e microsserviços internos com tratamento de erros robusto." data-en="Creation and optimization of relational models and SQL queries. Integration with external services and internal microservices with robust error handling.">Criação e otimização de modelos relacionais e consultas SQL. Integração com serviços externos e microsserviços internos com tratamento de erros robusto.</p>
+                        <p class="card-desc"
+                            data-pt="Criação e otimização de modelos relacionais e consultas SQL. Integração com serviços externos e microsserviços internos com tratamento de erros robusto."
+                            data-en="Creation and optimization of relational models and SQL queries. Integration with external services and internal microservices with robust error handling.">
+                            Criação e otimização de modelos relacionais e consultas SQL. Integração com serviços
+                            externos e microsserviços internos com tratamento de erros robusto.</p>
                         <div class="card-tags">
                             <span class="tag">Node.js</span>
                             <span class="tag">React</span>
@@ -850,12 +1033,18 @@
                     </article>
 
                     <article class="card">
-                        <h4 data-pt="Automação & Integração" data-en="Automation & Integration">Automação & Integração</h4>
+                        <h4 data-pt="Automação & Integração" data-en="Automation & Integration">Automação & Integração
+                        </h4>
                         <div class="card-meta">
-                            <span class="card-meta-accent" data-pt="Projetos Pessoais" data-en="Personal Projects">Projetos Pessoais</span>
+                            <span class="card-meta-accent" data-pt="Projetos Pessoais"
+                                data-en="Personal Projects">Projetos Pessoais</span>
                         </div>
                         <p class="card-meta" data-pt="2023 - Presente" data-en="2023 - Present">2023 - Presente</p>
-                        <p class="card-desc" data-pt="Aplicação de tratamento de erros, modularização e testes automatizados. Foco em Clean Code, SOLID e boas práticas de desenvolvimento." data-en="Application of error handling, modularization and automated testing. Focus on Clean Code, SOLID and best development practices.">Aplicação de tratamento de erros, modularização e testes automatizados. Foco em Clean Code, SOLID e boas práticas de desenvolvimento.</p>
+                        <p class="card-desc"
+                            data-pt="Aplicação de tratamento de erros, modularização e testes automatizados. Foco em Clean Code, SOLID e boas práticas de desenvolvimento."
+                            data-en="Application of error handling, modularization and automated testing. Focus on Clean Code, SOLID and best development practices.">
+                            Aplicação de tratamento de erros, modularização e testes automatizados. Foco em Clean Code,
+                            SOLID e boas práticas de desenvolvimento.</p>
                         <div class="card-tags">
                             <span class="tag">Python</span>
                             <span class="tag">Selenium</span>
@@ -873,42 +1062,194 @@
                 <h3 data-pt="Formação Acadêmica" data-en="Education">Formação Acadêmica</h3>
                 <div class="cards-grid">
                     <article class="card">
-                        <h4 data-pt="Bacharelado em Ciências da Computação" data-en="Bachelor's in Computer Science">Bacharelado em Ciências da Computação</h4>
+                        <h4 data-pt="Bacharelado em Ciências da Computação" data-en="Bachelor's in Computer Science">
+                            Bacharelado em Ciências da Computação</h4>
                         <p class="card-meta">UNIGRANDE</p>
-                        <div class="card-meta card-meta-accent" data-pt="2025 - Cursando" data-en="2025 - In Progress">2025 - Cursando</div>
+                        <div class="card-meta card-meta-accent" data-pt="2025 - Cursando" data-en="2025 - In Progress">
+                            2025 - Cursando</div>
                     </article>
 
                     <article class="card">
-                        <h4 data-pt="Tecnólogo em Análise e Desenvolvimento de Sistemas" data-en="Technologist in Systems Analysis and Development">Tecnólogo em Análise e Desenvolvimento de Sistemas</h4>
+                        <h4 data-pt="Tecnólogo em Análise e Desenvolvimento de Sistemas"
+                            data-en="Technologist in Systems Analysis and Development">Tecnólogo em Análise e
+                            Desenvolvimento de Sistemas</h4>
                         <p class="card-meta">UNIATENEU</p>
-                        <div class="card-meta card-meta-accent" data-pt="2021 - Trancado" data-en="2021 - Suspended">2021 - Trancado</div>
+                        <div class="card-meta card-meta-accent" data-pt="2021 - Trancado" data-en="2021 - Suspended">
+                            2021 - Trancado</div>
                     </article>
 
                     <article class="card">
                         <h4 data-pt="Idiomas" data-en="Languages">Idiomas</h4>
-                        <p class="card-meta"><strong data-pt="Português" data-en="Portuguese">Português</strong> - <span data-pt="Nativo" data-en="Native">Nativo</span></p>
-                        <p class="card-meta"><strong data-pt="Inglês" data-en="English">Inglês</strong> - <span data-pt="Intermediário (fluência técnica)" data-en="Intermediate (technical fluency)">Intermediário (fluência técnica)</span></p>
+                        <p class="card-meta"><strong data-pt="Português" data-en="Portuguese">Português</strong> - <span
+                                data-pt="Nativo" data-en="Native">Nativo</span></p>
+                        <p class="card-meta"><strong data-pt="Inglês" data-en="English">Inglês</strong> - <span
+                                data-pt="Intermediário (fluência técnica)"
+                                data-en="Intermediate (technical fluency)">Intermediário (fluência técnica)</span></p>
                     </article>
 
                     <article class="card">
-                        <h4 data-pt="Estudante de Inglês da Times" data-en="English student at Times">Estudante de Inglês da Times</h4>
+                        <h4 data-pt="Estudante de Inglês da Times" data-en="English student at Times">Estudante de
+                            Inglês da Times</h4>
                         <p class="card-meta">Times</p>
-                        <div class="card-meta card-meta-accent" data-pt="2025 - Cursando" data-en="2025 - In Progress">2026 - Cursando</div>
+                        <div class="card-meta card-meta-accent" data-pt="2025 - Cursando" data-en="2025 - In Progress">
+                            2026 - Cursando</div>
                     </article>
                 </div>
             </section>
 
             <!-- Projects Section -->
             <section id="projects" class="section">
-                <h3 data-pt="Projetos em Destaque" data-en="Featured Projects">Projetos em Destaque</h3>
+                <h3 data-pt="Projetos e Sistemas" data-en="Projects & Systems">Projetos e Sistemas</h3>
+
+                <h4 class="project-subtitle" data-pt="Sistemas em Produção & Online"
+                    data-en="Production & Online Systems">Sistemas em Produção & Online</h4>
+
+                <!-- BetBot Pro -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-area">
+                            <h4 class="project-title">BetBot Pro</h4>
+                            <span class="status-badge online">
+                                <span class="pulsing-dot"></span>
+                                <span data-pt="Em Produção" data-en="Production">Em Produção</span>
+                            </span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://betbotting.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="project-link">
+                                <i class="bi bi-globe"></i> <span data-pt="Acessar" data-en="Live Site">Acessar</span>
+                            </a>
+                            <a href="https://github.com/guilherme-0liveira-dev/betbot-pro" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="bi bi-github"></i> <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc"
+                        data-pt="Plataforma de automação esportiva de alta performance integrada ao Telegram. O sistema captura tips em tempo real usando a biblioteca Telethon, interpreta as mensagens utilizando técnicas de NLP e expressões regulares (RegEx) para extrair os mercados, eventos e odds, e executa as apostas de forma automática na Bet365 simulando comportamento humano com Playwright Stealth para contornar proteções."
+                        data-en="High-performance sports automation platform integrated with Telegram. The system captures tips in real time using the Telethon library, interprets messages using NLP techniques and regular expressions (RegEx) to extract markets, events, and odds, and executes bets automatically on Bet365 simulating human behavior with Playwright Stealth to bypass protections.">
+                        Plataforma de automação esportiva de alta performance integrada ao Telegram. O sistema captura
+                        tips em tempo real usando a biblioteca Telethon, interpreta as mensagens utilizando técnicas de
+                        NLP e expressões regulares (RegEx) para extrair os mercados, eventos e odds, e executa as
+                        apostas de forma automática na Bet365 simulando comportamento humano com Playwright Stealth para
+                        contornar proteções.</p>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Playwright Stealth</span>
+                        <span class="tag">Telethon</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Vite</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">arq</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Uvicorn</span>
+                    </div>
+                </article>
+
+                <!-- Roulette Analytics Pro -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-area">
+                            <h4 class="project-title">Roulette Analytics Pro</h4>
+                            <span class="status-badge online">
+                                <span class="pulsing-dot"></span>
+                                <span data-pt="Online" data-en="Online">Online</span>
+                            </span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://blackcard-roulette.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="project-link">
+                                <i class="bi bi-globe"></i> <span data-pt="Acessar" data-en="Live Site">Acessar</span>
+                            </a>
+                            <a href="https://github.com/guilherme-0liveira-dev/blackcard-roulette" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="bi bi-github"></i> <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc"
+                        data-pt="Plataforma analítica avançada e monitoramento estatístico em tempo real de até 7 roletas online simultaneamente. Possui regras de negócio dinâmicas e triggers customizáveis, conexões persistentes via WebSockets com padrão subscribe/unsubscribe, fila de tarefas assíncronas assente em Celery, painel Next.js 14 profissional com suporte nativo a dark mode, e uma suite robusta de observabilidade e healthcheck de microsserviços."
+                        data-en="Advanced analytical platform and real-time statistical monitoring of up to 7 online roulettes simultaneously. It features dynamic business rules and customizable triggers, persistent connections via WebSockets with subscribe/unsubscribe patterns, a Celery-based async task queue, a professional Next.js 14 dashboard with native dark mode, and a robust microservices observability and health check suite.">
+                        Plataforma analítica avançada e monitoramento estatístico em tempo real de até 7 roletas online
+                        simultaneamente. Possui regras de negócio dinâmicas e triggers customizáveis, conexões
+                        persistentes via WebSockets com padrão subscribe/unsubscribe, fila de tarefas assíncronas
+                        assente em Celery, painel Next.js 14 profissional com suporte nativo a dark mode, e uma suite
+                        robusta de observabilidade e healthcheck de microsserviços.</p>
+                    <div class="card-tags">
+                        <span class="tag">Next.js 14</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">WebSockets</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">Celery</span>
+                        <span class="tag">Nginx</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Tailwind CSS</span>
+                    </div>
+                </article>
+
+                <!-- Affiliate Promo Bot -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-area">
+                            <h4 class="project-title">Affiliate Promo Bot</h4>
+                            <span class="status-badge production">
+                                <span class="pulsing-dot"></span>
+                                <span data-pt="Em Produção" data-en="Production">Em Produção</span>
+                            </span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/guilherme-0liveira-dev/Afiliados" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="bi bi-github"></i> <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc"
+                        data-pt="Sistema profissional automatizado para monitoramento de promoções de e-commerces (Amazon, Mercado Livre, Shopee). Inclui conversor inteligente de links de afiliados, motor de pontuação heurístico (scoring engine 0-100) acoplado a um classificador estatístico de IA leve para classificar ofertas como 'IMPERDÍVEL', disparos formatados para Telegram com botões interativos inline, e dashboard administrativo Streamlit com métricas detalhadas de cliques e CTR."
+                        data-en="Professional automated system for monitoring e-commerce promotions (Amazon, Mercado Livre, Shopee). It includes an intelligent affiliate link converter, a heuristic scoring engine (0-100) coupled with a lightweight statistical AI classifier to badge deals as 'MUST-HAVE', formatted broadcasts to Telegram with interactive inline buttons, and a Streamlit admin dashboard with detailed click and CTR metrics.">
+                        Sistema profissional automatizado para monitoramento de promoções de e-commerces (Amazon,
+                        Mercado Livre, Shopee). Inclui conversor inteligente de links de afiliados, motor de pontuação
+                        heurístico (scoring engine 0-100) acoplado a um classificador estatístico de IA leve para
+                        classificar ofertas como 'IMPERDÍVEL', disparos formatados para Telegram com botões interativos
+                        inline, e dashboard administrativo Streamlit com métricas detalhadas de cliques e CTR.</p>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Next.js 15</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">BeautifulSoup</span>
+                        <span class="tag">HTTPX</span>
+                        <span class="tag">APScheduler</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </article>
+
+                <h4 class="project-subtitle" data-pt="APIs & Utilitários" data-en="APIs & Utilities"
+                    style="margin-top: 3.5rem;">APIs & Utilitários</h4>
+
+                <!-- API de Rastreio -->
                 <article class="project-card">
                     <div class="project-header">
                         <h4 class="project-title">API de Rastreio</h4>
-                        <a href="https://github.com/guilherme-0liveira-dev/Rastreamento_API" target="_blank" rel="noopener noreferrer" class="project-link">
-                            <i class="bi bi-github"></i> GitHub
-                        </a>
+                        <div class="project-links">
+                            <a href="https://github.com/guilherme-0liveira-dev/Rastreamento_API" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="bi bi-github"></i> <span>GitHub</span>
+                            </a>
                         </div>
-                        <p class="project-desc" data-pt="Uma aplicação web completa para rastreamento de encomendas dos Correios, construída com Next.js 15 e tecnologia moderna. Este sistema implementa múltiplas fontes de dados dos Correios para fornecer informações em tempo real sobre o status de pacotes e correspondências." data-en="A complete web application for tracking postal service parcels, built with Next.js 15 and modern technology. This system implements multiple data sources from the postal service to provide real-time information on the status of packages and mail.">Uma aplicação web completa para rastreamento de encomendas dos Correios, construída com Next.js 15 e tecnologia moderna. Este sistema implementa múltiplas fontes de dados dos Correios para fornecer informações em tempo real sobre o status de pacotes e correspondências.</p>
+                    </div>
+                    <p class="project-desc"
+                        data-pt="Uma aplicação web completa para rastreamento de encomendas dos Correios, construída com Next.js 15 e tecnologia moderna. Este sistema implementa múltiplas fontes de dados dos Correios para fornecer informações em tempo real sobre o status de pacotes e correspondências."
+                        data-en="A complete web application for tracking postal service parcels, built with Next.js 15 and modern technology. This system implements multiple data sources from the postal service to provide real-time information on the status of packages and mail.">
+                        Uma aplicação web completa para rastreamento de encomendas dos Correios, construída com Next.js
+                        15 e tecnologia moderna. Este sistema implementa múltiplas fontes de dados dos Correios para
+                        fornecer informações em tempo real sobre o status de pacotes e correspondências.</p>
                     <div class="card-tags">
                         <span class="tag">Next.js</span>
                         <span class="tag">TypeScript</span>
@@ -919,14 +1260,22 @@
                     </div>
                 </article>
 
+                <!-- CRUD de Gestão de Produtos -->
                 <article class="project-card">
                     <div class="project-header">
                         <h4 class="project-title">CRUD de Gestão de Produtos</h4>
-                        <a href="https://github.com/guilherme-0liveira-dev/CRUD-Completo/tree/develop" target="_blank" rel="noopener noreferrer" class="project-link">
-                            <i class="bi bi-github"></i> GitHub
-                        </a>
+                        <div class="project-links">
+                            <a href="https://github.com/guilherme-0liveira-dev/CRUD-Completo/tree/develop"
+                                target="_blank" rel="noopener noreferrer" class="project-link">
+                                <i class="bi bi-github"></i> <span>GitHub</span>
+                            </a>
+                        </div>
                     </div>
-                    <p class="project-desc" data-pt="Este é um sistema completo para gestão de estoque, pedidos e usuários, desenvolvido com foco em performance, segurança e escalabilidade." data-en="This is a complete system for managing inventory, orders, and users, developed with a focus on performance, security, and scalability.">Este é um sistema completo para gestão de estoque, pedidos e usuários, desenvolvido com foco em desempenho, segurança e escalabilidade.</p>
+                    <p class="project-desc"
+                        data-pt="Este é um sistema completo para gestão de estoque, pedidos e usuários, desenvolvido com foco em performance, segurança e escalabilidade."
+                        data-en="This is a complete system for managing inventory, orders, and users, developed with a focus on performance, security, and scalability.">
+                        Este é um sistema completo para gestão de estoque, pedidos e usuários, desenvolvido com foco em
+                        desempenho, segurança e escalabilidade.</p>
                     <div class="card-tags">
                         <span class="tag">Node.js</span>
                         <span class="tag">Express 5</span>
@@ -943,45 +1292,27 @@
                     </div>
                 </article>
 
+                <!-- API de Despesas -->
                 <article class="project-card">
                     <div class="project-header">
                         <h4 class="project-title">API de Despesas</h4>
-                        <a href="https://github.com/guilherme-0liveira-dev/Api-Despesas" target="_blank" rel="noopener noreferrer" class="project-link">
-                            <i class="bi bi-github"></i> GitHub
-                        </a>
+                        <div class="project-links">
+                            <a href="https://github.com/guilherme-0liveira-dev/Api-Despesas" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="bi bi-github"></i> <span>GitHub</span>
+                            </a>
+                        </div>
                     </div>
-                    <p class="project-desc" data-pt="API RESTful desenvolvida em PHP com framework Yii2 para gerenciamento de despesas pessoais com autenticação e endpoints completos." data-en="RESTful API developed in PHP with Yii2 framework for personal expense management with authentication and complete endpoints.">API RESTful desenvolvida em PHP com framework Yii2 para gerenciamento de despesas pessoais com autenticação e endpoints completos.</p>
+                    <p class="project-desc"
+                        data-pt="API RESTful desenvolvida em PHP com framework Yii2 para gerenciamento de despesas pessoais com autenticação e endpoints completos."
+                        data-en="RESTful API developed in PHP with Yii2 framework for personal expense management with authentication and complete endpoints.">
+                        API RESTful desenvolvida em PHP com framework Yii2 para gerenciamento de despesas pessoais com
+                        autenticação e endpoints completos.</p>
                     <div class="card-tags">
                         <span class="tag">PHP</span>
                         <span class="tag">Yii2</span>
                         <span class="tag">REST API</span>
                         <span class="tag">MySQL</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-header">
-                        <h4 class="project-title">Bet Auto</h4>
-                        <a href="https://betbotting.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                            <i class="bi bi-vercel"></i> Vercel
-                        </a>
-                    </div>
-                    <p class="project-desc" data-pt="Plataforma fullstack de automação inteligente para operações analíticas e execução automatizada, desenvolvida com foco em alta performance, processamento de sinais em tempo real e integração entre múltiplos serviços." data-en="A full-stack intelligent automation platform for analytical operations and automated execution, developed with a focus on high performance, real-time signal processing, and integration between multiple services.">Plataforma fullstack de automação inteligente para operações analíticas e execução automatizada, desenvolvida com foco em alta performance, processamento de sinais em tempo real e integração entre múltiplos serviços.</p>
-                    <div class="card-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Uvicorn</span>
-                        <span class="tag">Telethon</span>
-                        <span class="tag">Playwright</span>
-                        <span class="tag">arq</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">SQLAlchemy</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">Pytesseract + Pillow</span>
-                        <span class="tag">Pydantic</span>
-                        <span class="tag">Python-jose</span>
-                        <span class="tag">Bcrypt/Passlib</span>
-                        <span class="tag">Docker</span>
                     </div>
                 </article>
             </section>
@@ -1072,4 +1403,5 @@
         });
     </script>
 </body>
+
 </html>
