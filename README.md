@@ -2,35 +2,34 @@
 
 Portfólio moderno, responsivo e bilíngue de **Engenheiro de Software & Desenvolvedor Backend**, com foco em **APIs escaláveis, microsserviços, automação de alta performance e ecossistemas SaaS**.
 
-Desenvolvido com padrão visual contemporâneo (*Crafted Engineering Aesthetic*), eliminando clichês robóticos ou artificiais e priorizando tipografia editorial, scroll contínuo com scrollspy automático, alternância fluida de temas (Dark/Light) e suporte completo a dois idiomas (PT-BR e EN).
+Desenvolvido com padrão visual contemporâneo monocromático (*Clean Black & White / White & Black*), eliminando clichês robóticos ou artificiais e priorizando tipografia editorial limpa, scroll contínuo com scrollspy automático, alternância fluida de temas (Dark/Light) e suporte completo a dois idiomas (PT-BR e EN).
 
 ---
 
-## 🎯 Destaques do Redesign
+## 🎯 Destaques do Portfólio
 
-- **Estética Contemporânea e Humana**: Saída do visual neon cyberpunk genérico para uma direção de arte polida inspirada nas referências globais mais respeitadas (Linear, Vercel, Stripe). Tons profundos de Obsidian e Indigo no Dark Mode, e acabamento editorial impecável no Light Mode.
-- **Leitura Contínua & Scrollspy**: O portfólio não oculta mais seções em abas fechadas. O usuário rola organicamente pela história, competências e projetos, enquanto a sidebar lateral acompanha e indica em tempo real a seção ativa através de `IntersectionObserver`.
-- **Spotlight Interativo**: Efeito suave de luz seguindo o cursor sobre os cards de projetos e métricas.
-- **Vitrine Atualizada de Sistemas em Produção**:
-  - **JusGrowth SaaS**: CRM e atendimento jurídico multicanal (WhatsApp multi-atendente via WebSockets, funil Kanban, IA sob Provimento OAB 205/2021, ZapSign e Meta Ads Insights).
-  - **Axivon SaaS**: Plataforma multi-tenant de agendamento e automação de serviços em tempo real.
-  - **BetBot Pro**: Automação de alta performance integrada ao Telegram, processamento com NLP/RegEx e Playwright Stealth.
-  - **Roulette Analytics Pro**: Observabilidade estatística em tempo real de até 7 mesas simultâneas com WebSockets e Celery.
-  - **Affiliate Promo Engine**: Monitoramento de promoções (Amazon, ML, Shopee), conversão com encurtadores oficiais, scoring heurístico 0-100 e classificador de IA leve.
-  - **API de Rastreio dos Correios**: Interface moderna com Next.js 15, Tailwind CSS e rotas resilientes.
-  - **Enterprise Inventory & Orders**: Backend robusto com Node.js, Express 5, Prisma, Zod e Swagger.
-- **Suporte Multilíngue (PT-BR / EN)**: Alternância instantânea com persistência no `localStorage` e download do CV correspondente ao idioma ativo.
-- **Performance Máxima**: Construído em HTML5 semântico, Vanilla CSS e Vanilla JavaScript (sem dependências pesadas de bundle).
+- **Design Monocromático de Alta Fidelidade**: Visual limpo em escala de cinzas cirúrgica (Dark Mode preto profundo e Light Mode branco puro), sem elementos neon ou ruído visual.
+- **Leitura Contínua & Scrollspy**: O portfólio não esconde seções em abas. O visitante rola organicamente pela história, competências e projetos, enquanto a sidebar lateral acompanha e indica em tempo real a seção ativa através de `IntersectionObserver`.
+- **Status dos Projetos**:
+  - **JusGrowth SaaS**: Marcado como **o único projeto ativo & em produção no momento**, com link online direto para [jusgrowth.vercel.app](https://jusgrowth.vercel.app/) e acesso à documentação da arquitetura.
+  - **Demais Projetos**: Marcados com status **Pausado** e identificação de **Repositório Privado**, sem links externos quebrados.
+- **Visualizador Técnico de Arquitetura (System READMEs)**:
+  - Cada projeto conta com um botão **"README do Sistema"** que abre um modal minimalista exibindo a documentação de engenharia:
+    - 📌 Problema e objetivo de negócio
+    - ⚙️ Diagrama de fluxo e pipeline de dados (WebSockets, mensageria, filas, workers)
+    - 🛡️ Desafios técnicos superados (bypass de antibot, prevenção de concorrência, conformidade ética OAB)
+    - 🛠️ Stack tecnológica detalhada
+- **Suporte Multilíngue Completo (PT-BR / EN)**: Alternância instantânea com persistência no `localStorage`, cobrindo tanto o portfólio quanto os READMEs técnicos de cada sistema.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5 Semântico**: Estruturação acessível e otimizada para SEO.
-- **Vanilla CSS (Design Tokens)**: Variáveis CSS modernas, Glassmorphism, CSS Grid & Flexbox, microinterações e transições otimizadas via GPU.
-- **Vanilla JavaScript (ES6+)**: Controle de tema, tradução dinâmica, scrollspy com `IntersectionObserver` e spotlight interativo.
-- **Bootstrap Icons 1.11.3**: Ícones SVG leves via CDN.
-- **Google Fonts**: *Plus Jakarta Sans*, *Space Grotesk* e *JetBrains Mono*.
+- **Vanilla CSS (Design Tokens)**: Variáveis CSS modernas, modo escuro/claro monocromático, tipografia equilibrada e transições suaves.
+- **Vanilla JavaScript (ES6+)**: Controle de tema, tradução dinâmica, scrollspy com `IntersectionObserver` e modal de documentação técnica.
+- **Bootstrap Icons 1.11.3**: Ícones SVG minimalistas via CDN.
+- **Google Fonts**: *Inter*, *Space Grotesk* e *JetBrains Mono*.
 
 ---
 

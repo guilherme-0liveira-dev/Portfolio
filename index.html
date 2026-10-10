@@ -36,6 +36,7 @@
             --bg-card-hover: rgba(255, 255, 255, 0.05);
             --bg-pill: rgba(255, 255, 255, 0.06);
             --bg-pill-hover: rgba(255, 255, 255, 0.12);
+            --bg-modal: #0d0d10;
 
             --border-subtle: rgba(255, 255, 255, 0.09);
             --border-hover: rgba(255, 255, 255, 0.22);
@@ -51,6 +52,7 @@
 
             --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
             --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+            --shadow-modal: 0 20px 50px rgba(0, 0, 0, 0.7);
 
             --radius-xs: 4px;
             --radius-sm: 8px;
@@ -71,6 +73,7 @@
             --bg-card-hover: rgba(0, 0, 0, 0.04);
             --bg-pill: rgba(0, 0, 0, 0.05);
             --bg-pill-hover: rgba(0, 0, 0, 0.1);
+            --bg-modal: #ffffff;
 
             --border-subtle: rgba(0, 0, 0, 0.08);
             --border-hover: rgba(0, 0, 0, 0.22);
@@ -86,6 +89,7 @@
 
             --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
             --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-modal: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         /* ==========================================================================
@@ -506,12 +510,76 @@
             gap: 2rem;
         }
 
+        /* Status & Badges Clean */
+        .badge-clean {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .badge-status-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .status-pill-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-full);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            letter-spacing: 0.02em;
+        }
+
+        .status-pill-badge.active-live {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-hover);
+            color: var(--text-primary);
+        }
+
+        .status-pill-badge.active-live .dot-live {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--text-primary);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+        }
+
+        .status-pill-badge.paused {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+        }
+
+        .badge-private-repo {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.25rem 0.55rem;
+            border-radius: var(--radius-xs);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
         /* Flagship JusGrowth Card */
         .flagship-box {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 2rem;
+            padding: 2.25rem;
             transition: border-color 0.25s ease, background-color 0.25s ease;
         }
 
@@ -526,28 +594,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .badge-clean {
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 0.25rem 0.65rem;
-            border-radius: var(--radius-full);
-            background: var(--bg-pill);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-        }
-
-        .badge-status {
-            font-size: 0.74rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
+            margin-bottom: 1.15rem;
         }
 
         .flagship-title-row {
@@ -560,7 +607,7 @@
         }
 
         .flagship-name {
-            font-size: 1.55rem;
+            font-size: 1.65rem;
             font-weight: 700;
             color: var(--text-primary);
         }
@@ -572,28 +619,39 @@
             margin-left: 0.5rem;
         }
 
-        .action-arrow-link {
-            font-size: 0.85rem;
+        .project-actions-group {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .action-arrow-link,
+        .btn-readme-open {
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--text-primary);
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.35rem 0.75rem;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
             border-radius: var(--radius-sm);
             border: 1px solid var(--border-subtle);
             background: var(--bg-pill);
+            cursor: pointer;
+            font-family: var(--font-sans);
             transition: all 0.2s ease;
         }
 
-        .action-arrow-link:hover {
+        .action-arrow-link:hover,
+        .btn-readme-open:hover {
             border-color: var(--border-hover);
             background: var(--bg-pill-hover);
             transform: translateY(-1px);
         }
 
         .project-explanation {
-            font-size: 0.95rem;
+            font-size: 0.96rem;
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -630,15 +688,15 @@
         /* Grid de Sistemas Secundários */
         .projects-compact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.35rem;
         }
 
         .project-item-card {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            padding: 1.6rem;
+            padding: 1.65rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -650,24 +708,32 @@
             background: var(--bg-card-hover);
         }
 
-        .project-item-header {
+        .project-item-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 0.65rem;
+            margin-bottom: 0.85rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .project-item-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .project-item-text {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.65;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .project-bottom-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .tech-pill-row {
@@ -684,6 +750,166 @@
             background: var(--bg-pill);
             border: 1px solid var(--border-subtle);
             color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           MODAL TÉCNICO (SYSTEM ARCHITECTURE README)
+           ========================================================================== */
+        .readme-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            place-items: center;
+            z-index: 1000;
+            padding: 1.5rem;
+            animation: fadeInOverlay 0.2s ease-out;
+        }
+
+        .readme-modal-overlay.active {
+            display: grid;
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .readme-modal-box {
+            background: var(--bg-modal);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 760px;
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-modal);
+            overflow: hidden;
+            position: relative;
+            animation: slideUpModal 0.25s var(--ease-spring);
+        }
+
+        @keyframes slideUpModal {
+            from { opacity: 0; transform: translateY(14px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .readme-modal-header {
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: var(--bg-surface);
+        }
+
+        .readme-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .readme-modal-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .readme-close-btn {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: var(--radius-xs);
+            padding: 0.35rem 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: var(--font-mono);
+            transition: all 0.2s ease;
+        }
+
+        .readme-close-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+            background: var(--bg-pill-hover);
+        }
+
+        .readme-modal-body {
+            padding: 2rem 2.25rem;
+            overflow-y: auto;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+
+        /* Estilização do Conteúdo do Readme */
+        .readme-content-section {
+            margin-bottom: 2rem;
+        }
+
+        .readme-content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .readme-section-heading {
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.4rem;
+        }
+
+        .readme-flow-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+
+        .readme-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            margin-top: 0.75rem;
+        }
+
+        .readme-list li {
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .readme-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .readme-list li strong {
+            color: var(--text-primary);
         }
 
         /* ==========================================================================
@@ -856,6 +1082,10 @@
 
             .flagship-box {
                 padding: 1.4rem;
+            }
+
+            .readme-modal-body {
+                padding: 1.5rem 1.25rem;
             }
         }
     </style>
@@ -1079,22 +1309,28 @@
                 </div>
             </section>
 
-            <!-- PROJETOS EM DESTAQUE & SISTEMAS EM PRODUÇÃO -->
+            <!-- PROJETOS EM DESTAQUE & ARQUITETURAS DE SISTEMAS -->
             <section id="projects" class="section-block">
                 <div class="section-heading">
-                    <h2 class="section-title" data-pt="Projetos em Produção" data-en="Production Projects">Projetos em Produção</h2>
+                    <h2 class="section-title" data-pt="Sistemas & Arquiteturas" data-en="Systems & Architectures">Sistemas & Arquiteturas</h2>
                     <div class="heading-line"></div>
                 </div>
 
                 <div class="projects-stream">
 
-                    <!-- Flagship: JusGrowth SaaS Legal CRM -->
+                    <!-- Flagship: JusGrowth SaaS Legal CRM (ÚNICO ATIVO NO MOMENTO) -->
                     <article class="flagship-box">
                         <div class="flagship-tag-row">
-                            <span class="badge-clean" data-pt="SaaS Flagship" data-en="Flagship SaaS">SaaS Flagship</span>
-                            <span class="badge-status">
-                                <span class="dot-subtle"></span>
-                                <span data-pt="Em Produção & Online" data-en="Live & In Production">Em Produção & Online</span>
+                            <div class="badge-status-row">
+                                <span class="badge-clean" data-pt="SaaS Flagship" data-en="Flagship SaaS">SaaS Flagship</span>
+                                <span class="status-pill-badge active-live">
+                                    <span class="dot-live"></span>
+                                    <span data-pt="Ativo & Em Produção" data-en="Active & In Production">Ativo & Em Produção</span>
+                                </span>
+                            </div>
+                            <span class="badge-private-repo">
+                                <i class="bi bi-lock-fill"></i>
+                                <span data-pt="Repositório Privado" data-en="Private Repo">Repositório Privado</span>
                             </span>
                         </div>
 
@@ -1104,17 +1340,23 @@
                                 <span class="flagship-sub" data-pt="SaaS CRM & Atendimento para Advogados" data-en="Legal CRM & Multi-Agent SaaS">SaaS CRM & Atendimento para Advogados</span>
                             </div>
 
-                            <a href="https://jusgrowth.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                class="action-arrow-link" title="Acessar Plataforma">
-                                <span data-pt="Acessar Plataforma" data-en="Visit Platform">Acessar Plataforma</span>
-                                <i class="bi bi-arrow-up-right"></i>
-                            </a>
+                            <div class="project-actions-group">
+                                <button class="btn-readme-open" data-readme="jusgrowth" title="Ver documentação técnica da arquitetura">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
+                                <a href="https://jusgrowth.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                    class="action-arrow-link" title="Acessar Plataforma JusGrowth Online">
+                                    <span data-pt="Acessar Plataforma" data-en="Visit Platform">Acessar Plataforma</span>
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </a>
+                            </div>
                         </div>
 
                         <p class="project-explanation"
-                            data-pt="Plataforma SaaS CRM desenvolvida sob medida para escritórios jurídicos e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de casos e prospecção, atribuição fechada de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração de processos e assistente de IA em conformidade com o Provimento OAB 205/2021."
-                            data-en="Legal SaaS CRM engineered specifically for law firms and independent lawyers. Integrates real-time multi-agent WhatsApp messaging via WebSockets, visual Kanban legal pipeline, closed-loop campaign ROI attribution via Meta Ads Insights, automated digital contract signing via ZapSign, court tracking sync, and an AI assistant compliant with OAB Regulation 205/2021.">
-                            Plataforma SaaS CRM desenvolvida sob medida para escritórios jurídicos e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de casos e prospecção, atribuição fechada de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração de processos e assistente de IA em conformidade com o Provimento OAB 205/2021.
+                            data-pt="Plataforma SaaS CRM de alta performance desenvolvida sob medida para escritórios jurídicos e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de casos e prospecção, atribuição fechada de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração processual e assistente de IA em conformidade com o Provimento OAB 205/2021."
+                            data-en="High-performance Legal SaaS CRM engineered specifically for law firms and independent lawyers. Integrates real-time multi-agent WhatsApp messaging via WebSockets, visual Kanban legal pipeline, closed-loop campaign ROI attribution via Meta Ads Insights, automated digital contract signing via ZapSign, court tracking sync, and an AI assistant compliant with OAB Regulation 205/2021.">
+                            Plataforma SaaS CRM de alta performance desenvolvida sob medida para escritórios jurídicos e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de casos e prospecção, atribuição fechada de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração processual e assistente de IA em conformidade com o Provimento OAB 205/2021.
                         </p>
 
                         <div class="flagship-specs">
@@ -1149,18 +1391,24 @@
                         </div>
                     </article>
 
-                    <!-- Grade dos Outros Sistemas em Produção -->
+                    <!-- Grade dos Outros Sistemas (PAUSADOS & REPOSITÓRIOS PRIVADOS) -->
                     <div class="projects-compact-grid">
 
-                        <!-- Axivon SaaS -->
+                        <!-- Axivon SaaS (PAUSADO) -->
                         <article class="project-item-card">
                             <div>
-                                <div class="project-item-header">
+                                <div class="project-item-top">
                                     <h3 class="project-item-title">Axivon SaaS</h3>
-                                    <span class="badge-status">
-                                        <span class="dot-subtle"></span>
-                                        <span data-pt="Produção" data-en="Production">Produção</span>
-                                    </span>
+                                    <div class="badge-status-row">
+                                        <span class="status-pill-badge paused">
+                                            <i class="bi bi-pause-circle"></i>
+                                            <span data-pt="Pausado" data-en="Paused">Pausado</span>
+                                        </span>
+                                        <span class="badge-private-repo">
+                                            <i class="bi bi-lock-fill"></i>
+                                            <span data-pt="Privado" data-en="Private">Privado</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p class="project-item-text"
                                     data-pt="Plataforma SaaS Multi-Tenant projetada para gestão de agendamentos e automação de fluxos operacionais. Conta com isolamento estrito de dados por tenant, confirmações automáticas via WhatsApp/Telegram, motor de concorrência com WebSockets e dashboard analítico."
@@ -1168,26 +1416,37 @@
                                     Plataforma SaaS Multi-Tenant projetada para gestão de agendamentos e automação de fluxos operacionais. Conta com isolamento estrito de dados por tenant, confirmações automáticas via WhatsApp/Telegram, motor de concorrência com WebSockets e dashboard analítico.
                                 </p>
                             </div>
-                            <div class="tech-pill-row">
-                                <span class="mono-pill">Next.js 15</span>
-                                <span class="mono-pill">FastAPI</span>
-                                <span class="mono-pill">PostgreSQL</span>
-                                <span class="mono-pill">Prisma ORM</span>
-                                <span class="mono-pill">Redis</span>
-                                <span class="mono-pill">Docker</span>
+                            <div class="project-bottom-row">
+                                <div class="tech-pill-row">
+                                    <span class="mono-pill">Next.js 15</span>
+                                    <span class="mono-pill">FastAPI</span>
+                                    <span class="mono-pill">PostgreSQL</span>
+                                    <span class="mono-pill">Prisma ORM</span>
+                                    <span class="mono-pill">Redis</span>
+                                    <span class="mono-pill">Docker</span>
+                                </div>
+                                <button class="btn-readme-open" data-readme="axivon">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
                             </div>
                         </article>
 
-                        <!-- BetBot Pro -->
+                        <!-- BetBot Pro (PAUSADO) -->
                         <article class="project-item-card">
                             <div>
-                                <div class="project-item-header">
+                                <div class="project-item-top">
                                     <h3 class="project-item-title">BetBot Pro</h3>
-                                    <a href="https://betbotting.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                        class="action-arrow-link" title="Acessar BetBot Pro">
-                                        <span data-pt="Acessar" data-en="Live">Acessar</span>
-                                        <i class="bi bi-arrow-up-right"></i>
-                                    </a>
+                                    <div class="badge-status-row">
+                                        <span class="status-pill-badge paused">
+                                            <i class="bi bi-pause-circle"></i>
+                                            <span data-pt="Pausado" data-en="Paused">Pausado</span>
+                                        </span>
+                                        <span class="badge-private-repo">
+                                            <i class="bi bi-lock-fill"></i>
+                                            <span data-pt="Privado" data-en="Private">Privado</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p class="project-item-text"
                                     data-pt="Motor de automação e execução em tempo real integrado ao Telegram. Captura tips via Telethon em milissegundos, extrai mercados e odds com NLP e RegEx estruturado, e executa rotinas headless com Playwright Stealth para contornar proteções antibot."
@@ -1195,25 +1454,36 @@
                                     Motor de automação e execução em tempo real integrado ao Telegram. Captura tips via Telethon em milissegundos, extrai mercados e odds com NLP e RegEx estruturado, e executa rotinas headless com Playwright Stealth para contornar proteções antibot.
                                 </p>
                             </div>
-                            <div class="tech-pill-row">
-                                <span class="mono-pill">Python</span>
-                                <span class="mono-pill">FastAPI</span>
-                                <span class="mono-pill">Playwright Stealth</span>
-                                <span class="mono-pill">Telethon</span>
-                                <span class="mono-pill">Redis / arq</span>
+                            <div class="project-bottom-row">
+                                <div class="tech-pill-row">
+                                    <span class="mono-pill">Python</span>
+                                    <span class="mono-pill">FastAPI</span>
+                                    <span class="mono-pill">Playwright Stealth</span>
+                                    <span class="mono-pill">Telethon</span>
+                                    <span class="mono-pill">Redis / arq</span>
+                                </div>
+                                <button class="btn-readme-open" data-readme="betbot">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
                             </div>
                         </article>
 
-                        <!-- Roulette Analytics Pro -->
+                        <!-- Roulette Analytics Pro (PAUSADO) -->
                         <article class="project-item-card">
                             <div>
-                                <div class="project-item-header">
+                                <div class="project-item-top">
                                     <h3 class="project-item-title">Roulette Analytics Pro</h3>
-                                    <a href="https://blackcard-roulette.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                        class="action-arrow-link" title="Acessar Roulette Analytics">
-                                        <span data-pt="Acessar" data-en="Live">Acessar</span>
-                                        <i class="bi bi-arrow-up-right"></i>
-                                    </a>
+                                    <div class="badge-status-row">
+                                        <span class="status-pill-badge paused">
+                                            <i class="bi bi-pause-circle"></i>
+                                            <span data-pt="Pausado" data-en="Paused">Pausado</span>
+                                        </span>
+                                        <span class="badge-private-repo">
+                                            <i class="bi bi-lock-fill"></i>
+                                            <span data-pt="Privado" data-en="Private">Privado</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p class="project-item-text"
                                     data-pt="Plataforma de observabilidade estatística em tempo real de até 7 mesas simultâneas. Possui triggers de negócio dinâmicos, conexões persistentes WebSockets com subscribe/unsubscribe, fila assíncrona com Celery e painel Next.js 14."
@@ -1221,24 +1491,36 @@
                                     Plataforma de observabilidade estatística em tempo real de até 7 mesas simultâneas. Possui triggers de negócio dinâmicos, conexões persistentes WebSockets com subscribe/unsubscribe, fila assíncrona com Celery e painel Next.js 14.
                                 </p>
                             </div>
-                            <div class="tech-pill-row">
-                                <span class="mono-pill">Next.js 14</span>
-                                <span class="mono-pill">FastAPI</span>
-                                <span class="mono-pill">WebSockets</span>
-                                <span class="mono-pill">Celery</span>
-                                <span class="mono-pill">Redis</span>
+                            <div class="project-bottom-row">
+                                <div class="tech-pill-row">
+                                    <span class="mono-pill">Next.js 14</span>
+                                    <span class="mono-pill">FastAPI</span>
+                                    <span class="mono-pill">WebSockets</span>
+                                    <span class="mono-pill">Celery</span>
+                                    <span class="mono-pill">Redis</span>
+                                </div>
+                                <button class="btn-readme-open" data-readme="roulette">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
                             </div>
                         </article>
 
-                        <!-- Affiliate Promo Engine -->
+                        <!-- Affiliate Promo Engine (PAUSADO) -->
                         <article class="project-item-card">
                             <div>
-                                <div class="project-item-header">
+                                <div class="project-item-top">
                                     <h3 class="project-item-title">Affiliate Promo Engine</h3>
-                                    <span class="badge-status">
-                                        <span class="dot-subtle"></span>
-                                        <span data-pt="Produção" data-en="Production">Produção</span>
-                                    </span>
+                                    <div class="badge-status-row">
+                                        <span class="status-pill-badge paused">
+                                            <i class="bi bi-pause-circle"></i>
+                                            <span data-pt="Pausado" data-en="Paused">Pausado</span>
+                                        </span>
+                                        <span class="badge-private-repo">
+                                            <i class="bi bi-lock-fill"></i>
+                                            <span data-pt="Privado" data-en="Private">Privado</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p class="project-item-text"
                                     data-pt="Pipeline automatizado para monitoramento e conversão de promoções de e-commerces (Amazon, Mercado Livre, Shopee). Possui encurtamento oficial direto, scoring heurístico (0-100) acoplado a classificador estatístico e disparos automatizados para Telegram."
@@ -1246,24 +1528,36 @@
                                     Pipeline automatizado para monitoramento e conversão de promoções de e-commerces (Amazon, Mercado Livre, Shopee). Possui encurtamento oficial direto, scoring heurístico (0-100) acoplado a classificador estatístico e disparos automatizados para Telegram.
                                 </p>
                             </div>
-                            <div class="tech-pill-row">
-                                <span class="mono-pill">Python</span>
-                                <span class="mono-pill">FastAPI</span>
-                                <span class="mono-pill">HTTPX / Scraping</span>
-                                <span class="mono-pill">Streamlit</span>
-                                <span class="mono-pill">PostgreSQL</span>
+                            <div class="project-bottom-row">
+                                <div class="tech-pill-row">
+                                    <span class="mono-pill">Python</span>
+                                    <span class="mono-pill">FastAPI</span>
+                                    <span class="mono-pill">HTTPX / Scraping</span>
+                                    <span class="mono-pill">Streamlit</span>
+                                    <span class="mono-pill">PostgreSQL</span>
+                                </div>
+                                <button class="btn-readme-open" data-readme="affiliate">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
                             </div>
                         </article>
 
-                        <!-- API de Rastreio Postal -->
+                        <!-- API de Rastreio Postal (PAUSADO) -->
                         <article class="project-item-card">
                             <div>
-                                <div class="project-item-header">
+                                <div class="project-item-top">
                                     <h3 class="project-item-title">API de Rastreio Postal</h3>
-                                    <a href="https://github.com/guilherme-0liveira-dev/Rastreamento_API" target="_blank"
-                                        rel="noopener noreferrer" class="action-arrow-link" title="Repositório no GitHub">
-                                        <i class="bi bi-github"></i> <span>GitHub</span>
-                                    </a>
+                                    <div class="badge-status-row">
+                                        <span class="status-pill-badge paused">
+                                            <i class="bi bi-pause-circle"></i>
+                                            <span data-pt="Pausado" data-en="Paused">Pausado</span>
+                                        </span>
+                                        <span class="badge-private-repo">
+                                            <i class="bi bi-lock-fill"></i>
+                                            <span data-pt="Privado" data-en="Private">Privado</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p class="project-item-text"
                                     data-pt="Aplicação moderna para rastreamento de encomendas em tempo real construída com Next.js 15, rotas de API resilientes e interface fluida com Tailwind CSS 4 e shadcn/ui. Integração tolerante a falhas com serviços postais."
@@ -1271,23 +1565,35 @@
                                     Aplicação moderna para rastreamento de encomendas em tempo real construída com Next.js 15, rotas de API resilientes e interface fluida com Tailwind CSS 4 e shadcn/ui. Integração tolerante a falhas com serviços postais.
                                 </p>
                             </div>
-                            <div class="tech-pill-row">
-                                <span class="mono-pill">Next.js 15</span>
-                                <span class="mono-pill">TypeScript</span>
-                                <span class="mono-pill">Tailwind CSS 4</span>
-                                <span class="mono-pill">API Routes</span>
+                            <div class="project-bottom-row">
+                                <div class="tech-pill-row">
+                                    <span class="mono-pill">Next.js 15</span>
+                                    <span class="mono-pill">TypeScript</span>
+                                    <span class="mono-pill">Tailwind CSS 4</span>
+                                    <span class="mono-pill">API Routes</span>
+                                </div>
+                                <button class="btn-readme-open" data-readme="tracking">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
                             </div>
                         </article>
 
-                        <!-- Enterprise Products CRUD -->
+                        <!-- Enterprise Inventory & Orders (PAUSADO) -->
                         <article class="project-item-card">
                             <div>
-                                <div class="project-item-header">
+                                <div class="project-item-top">
                                     <h3 class="project-item-title">Enterprise Inventory & Orders</h3>
-                                    <a href="https://github.com/guilherme-0liveira-dev/CRUD-Completo/tree/develop" target="_blank"
-                                        rel="noopener noreferrer" class="action-arrow-link" title="Repositório no GitHub">
-                                        <i class="bi bi-github"></i> <span>GitHub</span>
-                                    </a>
+                                    <div class="badge-status-row">
+                                        <span class="status-pill-badge paused">
+                                            <i class="bi bi-pause-circle"></i>
+                                            <span data-pt="Pausado" data-en="Paused">Pausado</span>
+                                        </span>
+                                        <span class="badge-private-repo">
+                                            <i class="bi bi-lock-fill"></i>
+                                            <span data-pt="Privado" data-en="Private">Privado</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p class="project-item-text"
                                     data-pt="Arquitetura de backend robusta para gestão de pedidos, estoque e autenticação multi-perfil. Desenvolvido com Node.js, Express 5, validação com Zod, documentação OpenAPI/Swagger e testes automatizados com Jest."
@@ -1295,13 +1601,19 @@
                                     Arquitetura de backend robusta para gestão de pedidos, estoque e autenticação multi-perfil. Desenvolvido com Node.js, Express 5, validação com Zod, documentação OpenAPI/Swagger e testes automatizados com Jest.
                                 </p>
                             </div>
-                            <div class="tech-pill-row">
-                                <span class="mono-pill">Node.js</span>
-                                <span class="mono-pill">Express 5</span>
-                                <span class="mono-pill">Prisma ORM</span>
-                                <span class="mono-pill">PostgreSQL</span>
-                                <span class="mono-pill">Zod</span>
-                                <span class="mono-pill">Jest</span>
+                            <div class="project-bottom-row">
+                                <div class="tech-pill-row">
+                                    <span class="mono-pill">Node.js</span>
+                                    <span class="mono-pill">Express 5</span>
+                                    <span class="mono-pill">Prisma ORM</span>
+                                    <span class="mono-pill">PostgreSQL</span>
+                                    <span class="mono-pill">Zod</span>
+                                    <span class="mono-pill">Jest</span>
+                                </div>
+                                <button class="btn-readme-open" data-readme="inventory">
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span data-pt="README do Sistema" data-en="System README">README do Sistema</span>
+                                </button>
                             </div>
                         </article>
 
@@ -1424,8 +1736,408 @@
         </main>
     </div>
 
-    <!-- SCRIPT DE INTERATIVIDADE, TEMA E IDIOMA -->
+    <!-- ==========================================================================
+         MODAL OVERLAY PARA EXIBIÇÃO DO README TÉCNICO DOS SISTEMAS
+         ========================================================================== -->
+    <div class="readme-modal-overlay" id="readmeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="readme-modal-box">
+            <header class="readme-modal-header">
+                <div class="readme-header-left">
+                    <h3 class="readme-modal-title" id="modalTitle">README Técnico</h3>
+                    <span class="badge-private-repo">
+                        <i class="bi bi-shield-lock"></i>
+                        <span data-pt="Documentação Técnica // Código Privado" data-en="Technical Brief // Private Code">Documentação Técnica // Código Privado</span>
+                    </span>
+                </div>
+                <button class="readme-close-btn" id="modalCloseBtn" aria-label="Fechar Modal">
+                    <span>Esc</span> [✕]
+                </button>
+            </header>
+            <div class="readme-modal-body" id="modalBody">
+                <!-- Conteúdo do Readme carregado dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERATIVIDADE, TEMA, IDIOMA E READMES TÉCNICOS -->
     <script>
+        // BASE DE DADOS DOS READMES TÉCNICOS DOS SISTEMAS (PT & EN)
+        const PROJECT_READMES = {
+            jusgrowth: {
+                title: "JusGrowth — SaaS CRM & Atendimento Jurídico",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral & Problema</h4>
+                        <p>Plataforma SaaS desenvolvida para resolver a desorganização de atendimento e perda de leads em escritórios jurídicos. O sistema centraliza múltiplos advogados em um único número de WhatsApp oficial, automatiza a qualificação de casos preliminares e viabiliza fechamento contratual com assinatura digital imediata.</p>
+                    </div>
+
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Arquitetura & Fluxo de Dados</h4>
+                        <div class="readme-flow-box">
+[Meta Ads Insights Webhook] ───► [Express Backend Router] ───► [Prisma / Postgres]
+                                           │
+                                 [WebSockets Sync Hub]
+                                  ▲                 ▲
+                                  │                 │
+                      [Advogado 1 / Front]   [Advogado 2 / Front]
+                                           │
+       [ZapSign API Contract] ◄──── [Disparo WhatsApp Cloud API]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Ingestão de Leads:</strong> Webhooks do Meta Ads capturam anúncios com parâmetros UTM para rastreio preciso de Custo por Aquisição (CAC) e ROI closed-loop.</li>
+                            <li><strong>Motor WebSockets:</strong> Conexão full-duplex sincroniza mensagens entre todos os operadores sem necessidade de polling, garantindo latência abaixo de 100ms.</li>
+                            <li><strong>Contratos & ZapSign:</strong> Disparo automatizado de minutas jurídicas com campos preenchidos e link seguro de assinatura com validade jurídica pelo Provimento OAB.</li>
+                        </ul>
+                    </div>
+
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-shield-check"></i> 3. Desafios & Soluções</h4>
+                        <ul class="readme-list">
+                            <li><strong>Conformidade OAB (Provimento 205/2021):</strong> O assistente de triagem de IA atua estritamente informativo sem promessas de resultado ou captação indevida.</li>
+                            <li><strong>Concorrência no WhatsApp:</strong> Bloqueio otimista de lead para que dois advogados não respondam ao mesmo cliente simultaneamente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 4. Tecnologias Utilizadas</h4>
+                        <p>Next.js 15, TypeScript, Node.js, Express, WebSockets, Prisma ORM, PostgreSQL, Meta Ads Insights API, ZapSign API, Tailwind CSS 4.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview & Problem</h4>
+                        <p>High-performance Legal SaaS platform engineered to eliminate lead leaks and multi-lawyer communication friction. Centralizes law firm operations under a single verified WhatsApp number, automates ethical client screening, and expedites agreement signatures.</p>
+                    </div>
+
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Architecture & Data Flow</h4>
+                        <div class="readme-flow-box">
+[Meta Ads Insights Webhook] ───► [Express Backend Router] ───► [Prisma / Postgres]
+                                           │
+                                 [WebSockets Sync Hub]
+                                  ▲                 ▲
+                                  │                 │
+                      [Lawyer 1 / Frontend]   [Lawyer 2 / Frontend]
+                                           │
+       [ZapSign API Contract] ◄──── [WhatsApp Cloud API Broadcast]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Lead Ingestion:</strong> Ingests Meta Ads campaign webhooks with UTM tags for closed-loop ROI attribution.</li>
+                            <li><strong>WebSockets Engine:</strong> Full-duplex synchronization delivers real-time chat updates to all active lawyers without HTTP polling.</li>
+                            <li><strong>Digital Signatures:</strong> Generates dynamic legal agreements dispatched via ZapSign API directly into WhatsApp chat.</li>
+                        </ul>
+                    </div>
+
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-shield-check"></i> 3. Engineering Highlights</h4>
+                        <ul class="readme-list">
+                            <li><strong>OAB Ethical Compliance:</strong> AI triage engine calibrated strictly to Brazilian Bar Regulation 205/2021.</li>
+                            <li><strong>Agent Concurrency:</strong> Optimistic locking prevents race conditions when multiple lawyers view the same lead.</li>
+                        </ul>
+                    </div>
+
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 4. Technology Stack</h4>
+                        <p>Next.js 15, TypeScript, Node.js, Express, WebSockets, Prisma ORM, PostgreSQL, Meta Ads Insights API, ZapSign API, Tailwind CSS 4.</p>
+                    </div>
+                `
+            },
+            axivon: {
+                title: "Axivon SaaS — Multi-Tenant Booking & Workflow Engine",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral</h4>
+                        <p>Plataforma de alta disponibilidade para agendamento de serviços, controle de capacidade em tempo real e automação de fluxos operacionais com isolamento por organização (multi-tenancy).</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Como o Sistema Funciona</h4>
+                        <div class="readme-flow-box">
+[Cliente / Agendamento] ───► [FastAPI Gateway] ───► [Validação de Concorrência Redis]
+                                                            │ (Trava Atômica)
+                                                    [Prisma ORM / Postgres (Tenant ID)]
+                                                            │
+                                              [Fila de Notificações WhatsApp]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Isolamento Lógico:</strong> Middleware de contexto injeta o identificador <code>tenant_id</code> em cada transação, assegurando que nenhum dado vaze entre clientes.</li>
+                            <li><strong>Prevenção de Conflito de Horários:</strong> Bloqueios atômicos usando chaves distribuídas no Redis impedem reservas simultâneas para o mesmo profissional.</li>
+                            <li><strong>Notificações Automatizadas:</strong> Disparos programados de lembrete e confirmação via mensageria, reduzindo faltas (no-show).</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Tecnologias</h4>
+                        <p>Next.js 15, FastAPI (Python), PostgreSQL, Prisma ORM, Redis, WebSockets, Docker.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview</h4>
+                        <p>High-availability Multi-Tenant SaaS platform engineered for automated appointment booking, real-time schedule conflict prevention, and client engagement workflows.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Architecture & Mechanics</h4>
+                        <div class="readme-flow-box">
+[Client Booking Flow] ───► [FastAPI Gateway] ───► [Redis Concurrency Lock]
+                                                          │ (Atomic lock)
+                                                  [Prisma ORM / Postgres (Tenant ID)]
+                                                          │
+                                            [WhatsApp Dispatch Worker Queue]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Tenant Isolation:</strong> Context middleware injects strict <code>tenant_id</code> scope into all database operations.</li>
+                            <li><strong>Double-Booking Prevention:</strong> Atomic Redis distributed locks eliminate race conditions during high-demand schedule releases.</li>
+                            <li><strong>Event Dispatcher:</strong> Triggers automated confirmation messages to increase attendance rates.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Technologies</h4>
+                        <p>Next.js 15, FastAPI (Python), PostgreSQL, Prisma ORM, Redis, WebSockets, Docker.</p>
+                    </div>
+                `
+            },
+            betbot: {
+                title: "BetBot Pro — Sports Automation & Stealth Engine",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral</h4>
+                        <p>Sistema distribuído de captura e execução de tips esportivas com latência sub-segundo, combinando ingestão de mensageria Telegram, parsing estruturado e automação indetectável de navegador.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Pipeline de Execução</h4>
+                        <div class="readme-flow-box">
+[Telegram Channel MTProto] ───► [Telethon Client] ───► [NLP/RegEx Parser]
+                                                              │
+                                                        [Redis / arq Queue]
+                                                              │
+                                               [Playwright Stealth Worker]
+                                                              │ (Bypass antibot)
+                                                     [Execução & Confirmação]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Captura MTProto:</strong> Conexão direta com servidores do Telegram via Telethon, recebendo sinais em menos de 80ms.</li>
+                            <li><strong>Parser Heurístico:</strong> Extração determinística de tipster, partida, mercado, linha de entrada e limites de odd.</li>
+                            <li><strong>Playwright Stealth:</strong> Patch dinâmico para mascarar WebGL, navigator.webdriver, permissões e fingerprint de hardware, viabilizando execução segura sem bloqueios.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Tecnologias</h4>
+                        <p>Python, FastAPI, Telethon (Telegram API), Playwright Stealth, Redis, arq (Async Queue), PostgreSQL.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview</h4>
+                        <p>Sub-second signal processing and execution engine combining direct MTProto Telegram streaming, structured heuristic parsing, and stealth headless browser orchestration.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Execution Pipeline</h4>
+                        <div class="readme-flow-box">
+[Telegram Channel MTProto] ───► [Telethon Client] ───► [NLP/RegEx Parser]
+                                                              │
+                                                        [Redis / arq Queue]
+                                                              │
+                                               [Playwright Stealth Worker]
+                                                              │ (Antibot bypass)
+                                                     [Headless Execution]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>MTProto Streaming:</strong> Ingests broadcast channel alerts in under 80ms via native Telethon client.</li>
+                            <li><strong>Deterministic Parsing:</strong> Tokenizes messages to reliably isolate sport, match, target market, line, and minimum odd thresholds.</li>
+                            <li><strong>Stealth Browser:</strong> Masks WebGL fingerprints, plugin tables, and automation flags to avoid Cloudflare/Akamai bot detection.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Technologies</h4>
+                        <p>Python, FastAPI, Telethon (Telegram API), Playwright Stealth, Redis, arq, PostgreSQL.</p>
+                    </div>
+                `
+            },
+            roulette: {
+                title: "Roulette Analytics Pro — Live Table Observability",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral</h4>
+                        <p>Plataforma de observabilidade estatística e detecção de desvios padrão em tempo real para até 7 mesas ao vivo simultaneamente, processando fluxos persistentes com WebSockets.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Como Funciona</h4>
+                        <div class="readme-flow-box">
+[Live Casino Stream Data] ───► [FastAPI WebSocket Ingestion] ───► [In-Memory Math Engine]
+                                                                          │
+                                                           [Celery / Redis Persistence]
+                                                                          │
+                                                            [Next.js 14 Dashboard PubSub]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Motor Estatístico em Memória:</strong> Cálculo instantâneo de repetições, atrasos de dúzias e desvio quadrático médio a cada novo número sorteado.</li>
+                            <li><strong>Pub/Sub WebSockets:</strong> Distribuição seletiva de eventos para clientes conectados com base nas preferências de filtro de mesa.</li>
+                            <li><strong>Filas Celery:</strong> Compactação periódica de dados históricos para análise retrospectiva sem degradar a rota de baixa latência.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Tecnologias</h4>
+                        <p>Next.js 14, FastAPI, WebSockets, Redis, Celery Workers, PostgreSQL, Docker.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview</h4>
+                        <p>Real-time statistical observability platform calculating probabilities, variance, and standard deviations across up to 7 concurrent live roulette tables.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. System Mechanics</h4>
+                        <div class="readme-flow-box">
+[Live Casino Stream Data] ───► [FastAPI WebSocket Ingestion] ───► [In-Memory Math Engine]
+                                                                          │
+                                                           [Celery / Redis Persistence]
+                                                                          │
+                                                            [Next.js 14 Dashboard PubSub]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>In-Memory Statistical Engine:</strong> Evaluates cluster frequencies, sector delays, and historical standard deviations in sub-milliseconds.</li>
+                            <li><strong>Pub/Sub WebSockets:</strong> Granular room subscriptions preventing server overload during high user concurrency.</li>
+                            <li><strong>Celery Workers:</strong> Asynchronously compacts time-series data to disk without blocking the main event loop.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Technologies</h4>
+                        <p>Next.js 14, FastAPI, WebSockets, Redis, Celery Workers, PostgreSQL, Docker.</p>
+                    </div>
+                `
+            },
+            affiliate: {
+                title: "Affiliate Promo Engine — Scraper & Deal Pipeline",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral</h4>
+                        <p>Pipeline automatizado de monitoramento de e-commerces (Amazon, Mercado Livre, Shopee), pontuação de ofertas reais e conversão direta de links de afiliados sem intermediários lentos.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Arquitetura & Fluxo</h4>
+                        <div class="readme-flow-box">
+[E-Commerce Catalog Scraping] ───► [Heuristic Score Engine (0-100)] ───► [Oferta Aprovada?]
+                                                                                 │
+                                            [Encurtamento Direto Oficial: amzn.to / meli.la]
+                                                                                 │
+                                                  [Disparo Formatado Telegram Bot API]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Scraping com Rotação de Headers:</strong> HTTPX com pools assíncronos e contorno de páginas com renderização pesada (CSR).</li>
+                            <li><strong>Scoring Engine 0-100:</strong> Analisa histórico de preço, desconto percentual e relevância da categoria para classificar ofertas como "IMPERDÍVEIS".</li>
+                            <li><strong>Encurtamento Oficial Direto:</strong> Utiliza credenciais e sessões de afiliados para gerar links <code>amzn.to</code> e <code>meli.la</code> diretamente, eliminando atrasos de redirects para o usuário final.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Tecnologias</h4>
+                        <p>Python, FastAPI, HTTPX, BeautifulSoup4, Redis, PostgreSQL, Streamlit, Telegram Bot API.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview</h4>
+                        <p>Automated deal monitoring and official direct link shortening pipeline engineered for e-commerce marketplaces (Amazon, Mercado Livre, Shopee).</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. System Architecture</h4>
+                        <div class="readme-flow-box">
+[E-Commerce Catalog Scraping] ───► [Heuristic Score Engine (0-100)] ───► [Deal Qualified?]
+                                                                                 │
+                                            [Direct Official Shortener: amzn.to / meli.la]
+                                                                                 │
+                                                  [Telegram Bot API Instant Broadcast]
+                        </div>
+                        <ul class="readme-list">
+                            <li><strong>Resilient Scraping:</strong> Asynchronous HTTPX scraper rotating client headers to bypass heavy client-side rendering hurdles.</li>
+                            <li><strong>0-100 Scoring Engine:</strong> Computes discount depth vs. 90-day moving price averages to identify true bargains.</li>
+                            <li><strong>Direct Link Shortening:</strong> Authenticates against affiliate endpoints to generate native <code>amzn.to</code> and <code>meli.la</code> URLs directly, eliminating redirect latency.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Technologies</h4>
+                        <p>Python, FastAPI, HTTPX, BeautifulSoup4, Redis, PostgreSQL, Streamlit, Telegram Bot API.</p>
+                    </div>
+                `
+            },
+            tracking: {
+                title: "API de Rastreio Postal — Resilient Parcel Tracking",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral</h4>
+                        <p>Microsserviço de consulta de encomendas postais em tempo real, desenvolvido para lidar com instabilidades em endpoints legados dos Correios com tolerância a falhas e cache adaptativo.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Arquitetura</h4>
+                        <ul class="readme-list">
+                            <li><strong>Cache com TTL Dinâmico:</strong> Pacotes com status "Entregue" são armazenados de forma imutável; pacotes em trânsito expiram a cada 15 minutos para poupar recursos.</li>
+                            <li><strong>Fallback Multi-Source:</strong> Caso a fonte principal apresente timeout, a camada de serviço tenta rotas de dados alternativas de forma transparente.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Tecnologias</h4>
+                        <p>Next.js 15, TypeScript, Tailwind CSS 4, shadcn/ui, REST API Routes.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview</h4>
+                        <p>Fault-tolerant parcel tracking service designed to normalize fragmented postal service updates with adaptive caching and circuit-breaking fallbacks.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Architecture</h4>
+                        <ul class="readme-list">
+                            <li><strong>Dynamic TTL Caching:</strong> Delivered packages are cached permanently while transit items update with intelligent backoff intervals.</li>
+                            <li><strong>Multi-Endpoint Fallback:</strong> Gracefully reroutes upstream queries if the primary postal provider route experiences degradation.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Technologies</h4>
+                        <p>Next.js 15, TypeScript, Tailwind CSS 4, shadcn/ui, REST API Routes.</p>
+                    </div>
+                `
+            },
+            inventory: {
+                title: "Enterprise Inventory & Orders — Clean Architecture",
+                pt: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Visão Geral</h4>
+                        <p>Backend corporativo completo para controle de estoque, catalogação de produtos e ciclo de vida de pedidos com foco em consistência transacional e código limpo.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Decisões Arquiteturais</h4>
+                        <ul class="readme-list">
+                            <li><strong>Clean Architecture:</strong> Desacoplamento entre entidades de domínio, casos de uso e adaptadores HTTP.</li>
+                            <li><strong>Segurança & RBAC:</strong> Autenticação JWT com controle granular de acesso (Admin, Operador e Auditor).</li>
+                            <li><strong>Consistência ACID:</strong> Transações com Prisma ORM e PostgreSQL garantindo que operações de estoque nunca resultem em saldo negativo.</li>
+                            <li><strong>Documentação OpenAPI:</strong> Swagger interativo gerado a partir dos schemas de validação Zod.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Tecnologias</h4>
+                        <p>Node.js, Express 5, Prisma ORM, PostgreSQL, Zod, Swagger/OpenAPI, Jest, Supertest.</p>
+                    </div>
+                `,
+                en: `
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-bullseye"></i> 1. Overview</h4>
+                        <p>Enterprise inventory, catalog, and order lifecycle management backend engineered following Clean Architecture and Domain-Driven Design principles.</p>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-diagram-3"></i> 2. Architectural Highlights</h4>
+                        <ul class="readme-list">
+                            <li><strong>Layered Clean Architecture:</strong> Clear separation between domain models, business use cases, and HTTP controllers.</li>
+                            <li><strong>RBAC & Security:</strong> Stateless JWT authentication with fine-grained role permissions (Admin, Operator, Auditor).</li>
+                            <li><strong>ACID Transactions:</strong> Atomic Prisma operations safeguarding inventory balances against concurrency race conditions.</li>
+                            <li><strong>OpenAPI Compliance:</strong> Interactive Swagger documentation derived directly from runtime Zod schemas.</li>
+                        </ul>
+                    </div>
+                    <div class="readme-content-section">
+                        <h4 class="readme-section-heading"><i class="bi bi-stack"></i> 3. Technologies</h4>
+                        <p>Node.js, Express 5, Prisma ORM, PostgreSQL, Zod, Swagger/OpenAPI, Jest, Supertest.</p>
+                    </div>
+                `
+            }
+        };
+
         class PortfolioApp {
             constructor() {
                 this.themeToggle = document.getElementById('themeToggle');
@@ -1436,6 +2148,13 @@
                 this.navAnchors = document.querySelectorAll('.nav-anchor');
                 this.sections = document.querySelectorAll('.section-block');
                 
+                // Readme Modal elements
+                this.readmeModal = document.getElementById('readmeModal');
+                this.modalTitle = document.getElementById('modalTitle');
+                this.modalBody = document.getElementById('modalBody');
+                this.modalCloseBtn = document.getElementById('modalCloseBtn');
+                this.activeProjectKey = null;
+
                 this.currentLang = localStorage.getItem('portfolio_lang') || 'pt';
                 this.isDark = localStorage.getItem('portfolio_theme') !== 'light';
 
@@ -1448,6 +2167,7 @@
                 this.applyLanguage(this.currentLang);
                 this.setupEventListeners();
                 this.setupScrollspy();
+                this.setupReadmeModal();
             }
 
             setupYear() {
@@ -1468,6 +2188,9 @@
                     this.currentLang = this.currentLang === 'pt' ? 'en' : 'pt';
                     this.applyLanguage(this.currentLang);
                     localStorage.setItem('portfolio_lang', this.currentLang);
+                    if (this.readmeModal.classList.contains('active') && this.activeProjectKey) {
+                        this.renderReadmeContent(this.activeProjectKey);
+                    }
                 });
 
                 // Smooth Scroll ao clicar nos links da sidebar
@@ -1481,6 +2204,59 @@
                         }
                     });
                 });
+            }
+
+            setupReadmeModal() {
+                // Botões de abrir README
+                document.querySelectorAll('.btn-readme-open').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const projectKey = btn.getAttribute('data-readme');
+                        if (projectKey && PROJECT_READMES[projectKey]) {
+                            this.openReadme(projectKey);
+                        }
+                    });
+                });
+
+                // Fechar modal no botão
+                this.modalCloseBtn.addEventListener('click', () => {
+                    this.closeReadme();
+                });
+
+                // Fechar modal clicando fora
+                this.readmeModal.addEventListener('click', (e) => {
+                    if (e.target === this.readmeModal) {
+                        this.closeReadme();
+                    }
+                });
+
+                // Fechar com a tecla ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.readmeModal.classList.contains('active')) {
+                        this.closeReadme();
+                    }
+                });
+            }
+
+            openReadme(projectKey) {
+                this.activeProjectKey = projectKey;
+                this.renderReadmeContent(projectKey);
+                this.readmeModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            renderReadmeContent(projectKey) {
+                const data = PROJECT_READMES[projectKey];
+                if (!data) return;
+
+                this.modalTitle.textContent = data.title;
+                this.modalBody.innerHTML = data[this.currentLang] || data.pt;
+            }
+
+            closeReadme() {
+                this.readmeModal.classList.remove('active');
+                document.body.style.overflow = '';
+                this.activeProjectKey = null;
             }
 
             applyTheme(isDark) {
