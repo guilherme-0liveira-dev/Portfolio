@@ -5,1627 +5,1538 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Guilherme Oliveira - Desenvolvedor Backend. Python, JavaScript, APIs RESTful e arquitetura de software.">
-    <meta name="theme-color" content="#e74c3c">
-    <title>Guilherme Oliveira - Desenvolvedor Backend</title>
+        content="Guilherme Oliveira — Engenheiro de Software & Desenvolvedor Backend. Especialista em APIs escaláveis, microsserviços, automação de alta performance e arquitetura de sistemas com Python, Node.js e TypeScript.">
+    <meta name="theme-color" content="#09090b">
+    <title>Guilherme Oliveira — Software Engineer & Backend</title>
+
+    <!-- Google Fonts: Inter & Space Grotesk & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ==========================================================================
+           CLEAN MONOCHROME DESIGN TOKENS (PRETO & BRANCO / BRANCO & PRETO)
+           ========================================================================== */
+        :root {
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-display: 'Space Grotesk', var(--font-sans);
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Dark Mode (Black & White — Padrão) */
+            --bg-page: #09090b;
+            --bg-subtle: #141417;
+            --bg-surface: #111113;
+            --bg-card: rgba(255, 255, 255, 0.025);
+            --bg-card-hover: rgba(255, 255, 255, 0.05);
+            --bg-pill: rgba(255, 255, 255, 0.06);
+            --bg-pill-hover: rgba(255, 255, 255, 0.12);
+
+            --border-subtle: rgba(255, 255, 255, 0.09);
+            --border-hover: rgba(255, 255, 255, 0.22);
+            --border-active: #ffffff;
+
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+
+            --accent-contrast: #ffffff;
+            --accent-contrast-inv: #09090b;
+            --indicator-active: #ffffff;
+
+            --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+
+            --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --sidebar-width: 330px;
         }
 
-        :root {
-            --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            --font-heading: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+        /* Light Mode (White & Black Puro e Limpo) */
+        body:not(.dark-mode) {
+            --bg-page: #ffffff;
+            --bg-subtle: #f4f4f5;
+            --bg-surface: #fafafa;
+            --bg-card: rgba(0, 0, 0, 0.018);
+            --bg-card-hover: rgba(0, 0, 0, 0.04);
+            --bg-pill: rgba(0, 0, 0, 0.05);
+            --bg-pill-hover: rgba(0, 0, 0, 0.1);
 
-            /* Paleta Cyber Cyan & Electric Amber */
-            --cyan-primary: #00f2fe;
-            --cyan-glow: rgba(0, 242, 254, 0.4);
-            --amber-primary: #ff8c00;
-            --amber-glow: rgba(255, 140, 0, 0.4);
-            --neon-green: #00ffcc;
-            
-            --gradient-cyber: linear-gradient(135deg, #00f2fe 0%, #ff8c00 100%);
-            --gradient-cyan: linear-gradient(135deg, #00f2fe 0%, #0099ff 100%);
-            --gradient-amber: linear-gradient(135deg, #ff8c00 0%, #ff3b00 100%);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(0, 0, 0, 0.22);
+            --border-active: #09090b;
 
-            /* Dark mode (Tema Padrão Cyber Obsidian) */
-            --bg-dark: #070a12;
-            --bg-dark-2: #0d1322;
-            --bg-dark-card: rgba(15, 23, 42, 0.75);
-            --text-light: #f1f5f9;
-            --text-secondary-dark: #94a3b8;
-            --border-dark: rgba(0, 242, 254, 0.18);
-            --accent-dark: #00f2fe;
+            --text-primary: #09090b;
+            --text-secondary: #52525b;
+            --text-muted: #71717a;
 
-            /* Light mode (Clean Tech) */
-            --bg-light: #f1f5f9;
-            --bg-light-2: #ffffff;
-            --text-dark: #0f172a;
-            --text-secondary: #64748b;
-            --border-light: #cbd5e1;
-            --accent: #ff8c00;
-            --accent-light: rgba(0, 242, 254, 0.1);
+            --accent-contrast: #09090b;
+            --accent-contrast-inv: #ffffff;
+            --indicator-active: #09090b;
 
-            --radius-sm: 0.375rem;
-            --radius-md: 0.625rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.25rem;
-            --radius-full: 9999px;
+            --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ==========================================================================
+           RESET & TIPOGRAFIA
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: var(--font-family);
-            background: var(--bg-dark);
-            color: var(--text-light);
-            transition: background 0.3s ease, color 0.3s ease;
-            min-height: 100vh;
-            position: relative;
+            font-family: var(--font-sans);
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: 
-                radial-gradient(circle at 10% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 85%, rgba(255, 140, 0, 0.08) 0%, transparent 40%),
-                linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body:not(.dark-mode) {
-            background: var(--bg-light);
-            color: var(--text-dark);
-        }
-
-        body:not(.dark-mode)::before {
-            background-image: 
-                radial-gradient(circle at 10% 15%, rgba(0, 242, 254, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 90% 85%, rgba(255, 140, 0, 0.04) 0%, transparent 40%),
-                linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
-        }
-
-        h1, h2, h3, h4, h5, h6, .project-subtitle, .flagship-title {
-            font-family: var(--font-heading);
-            letter-spacing: -0.02em;
-        }
-
-        .container-main {
-            display: grid;
-            grid-template-columns: 290px 1fr;
-            min-height: 100vh;
             position: relative;
-            z-index: 1;
+            min-height: 100vh;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
-        /* ========================================
-           SIDEBAR FUTURISTA
-           ======================================== */
-        .sidebar {
-            grid-column: 1;
-            background: rgba(13, 19, 34, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 2.25rem 1.75rem;
-            border-right: 1px solid var(--border-dark);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            z-index: 10;
-        }
-
-        body:not(.dark-mode) .sidebar {
-            background: rgba(255, 255, 255, 0.9);
-            border-right-color: var(--border-light);
-        }
-
-        .sidebar h1 {
-            font-size: 1.85rem;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
             font-weight: 700;
-            margin-bottom: 0.25rem;
-            background: var(--gradient-cyber);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.15;
         }
 
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.8rem;
-            border-radius: var(--radius-full);
-            background: rgba(0, 255, 204, 0.08);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-            color: var(--neon-green);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.25rem;
-            margin-top: 0.5rem;
-            box-shadow: 0 0 12px rgba(0, 255, 204, 0.15);
-        }
-
-        .status-pill .pulse-green {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background-color: var(--neon-green);
-            box-shadow: 0 0 8px var(--neon-green);
-            animation: pulse-glow 1.5s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px var(--neon-green); }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        .sidebar .subtitle {
-            font-size: 0.95rem;
-            color: var(--cyan-primary);
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-        }
-
-        .sidebar .tagline {
-            font-size: 0.85rem;
-            color: var(--text-secondary-dark);
-            margin-bottom: 1rem;
-        }
-
-        body:not(.dark-mode) .sidebar .tagline {
-            color: var(--text-secondary);
-        }
-
-        .contact-info {
-            font-size: 0.82rem;
-            color: var(--text-secondary-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        body:not(.dark-mode) .contact-info {
-            color: var(--text-secondary);
-        }
-
-        .contact-info a {
-            color: var(--cyan-primary);
+        a {
+            color: inherit;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: color 0.2s ease, opacity 0.2s ease;
         }
 
-        .contact-info a:hover {
-            color: var(--amber-primary);
-            text-shadow: 0 0 8px var(--amber-glow);
+        /* ==========================================================================
+           FLOATING CONTROLS (TEMA & IDIOMA CLEAN)
+           ========================================================================== */
+        .controls-bar {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.3rem 0.45rem;
+            background: var(--bg-page);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            z-index: 100;
+            box-shadow: var(--shadow-subtle);
+            transition: border-color 0.2s ease;
         }
 
-        .cv-button {
+        .controls-bar:hover {
+            border-color: var(--border-hover);
+        }
+
+        .control-pill-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--gradient-cyber);
-            color: #070a12;
-            border: none;
-            border-radius: var(--radius-lg);
-            font-weight: 700;
-            font-size: 0.85rem;
+            gap: 0.4rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: var(--radius-full);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            text-align: center;
-            letter-spacing: 0.03em;
-            box-shadow: 0 4px 15px var(--cyan-glow);
+            transition: all 0.2s ease;
+            font-family: var(--font-sans);
         }
 
-        .cv-button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 25px var(--amber-glow);
-            color: #000;
+        .control-pill-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-pill);
         }
 
-        .sidebar-nav {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-            margin-top: 1.5rem;
+        .control-divider {
+            width: 1px;
+            height: 0.85rem;
+            background: var(--border-subtle);
         }
 
-        .sidebar-nav a {
-            text-decoration: none;
-            color: var(--text-secondary-dark);
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.6rem 0.8rem;
-            border-radius: var(--radius-md);
+        /* ==========================================================================
+           LAYOUT PRINCIPAL COM SIDEBAR STICKY
+           ========================================================================== */
+        .layout-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            gap: 4.5rem;
+            padding: 0 2rem;
+            min-height: 100vh;
             position: relative;
         }
 
-        body:not(.dark-mode) .sidebar-nav a {
+        /* ==========================================================================
+           SIDEBAR (MINIMALISTA, ELEGANTE & HUMANA)
+           ========================================================================== */
+        .sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5rem 0 3.5rem 0;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Monograma & Status Clean */
+        .identity-row {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .avatar-monogram {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-subtle);
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .status-clean-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            font-size: 0.74rem;
+            font-weight: 500;
             color: var(--text-secondary);
+        }
+
+        .dot-subtle {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--text-primary);
+            opacity: 0.9;
+        }
+
+        .profile-name {
+            font-size: 2.15rem;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            color: var(--text-primary);
+        }
+
+        .profile-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+
+        .profile-bio {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            max-width: 290px;
+        }
+
+        /* Sidebar Navigation com Linhas Sutis */
+        .sidebar-nav {
+            margin: 2rem 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .sidebar-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.45rem 0;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.2s ease;
+        }
+
+        .nav-line {
+            width: 20px;
+            height: 1px;
+            background: var(--text-muted);
+            transition: all 0.25s var(--ease-spring);
         }
 
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
-            color: var(--cyan-primary);
-            background: rgba(0, 242, 254, 0.08);
+            color: var(--text-primary);
         }
 
-        .sidebar-nav a.active::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 70%;
-            background: var(--gradient-cyber);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--cyan-primary);
+        .sidebar-nav a:hover .nav-line,
+        .sidebar-nav a.active .nav-line {
+            width: 44px;
+            background: var(--indicator-active);
         }
 
-        .social-links {
+        /* Footer da Sidebar */
+        .sidebar-footer {
             display: flex;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 2.6rem;
-            height: 2.6rem;
-            border-radius: var(--radius-md);
-            background: rgba(0, 242, 254, 0.08);
-            display: grid;
-            place-items: center;
-            color: var(--cyan-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            border: 1px solid var(--border-dark);
-        }
-
-        body:not(.dark-mode) .social-links a {
-            border-color: var(--border-light);
-        }
-
-        .social-links a:hover {
-            background: var(--gradient-cyber);
-            color: #070a12;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--cyan-glow);
-            border-color: transparent;
-        }
-
-        /* ========================================
-           CONTENT AREA
-           ======================================== */
-        .content {
-            grid-column: 2;
-            padding: 2.5rem 3rem;
-            overflow-y: auto;
-            max-height: 100vh;
-            margin-top: 3.5rem;
-        }
-
-        .section {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .section h3 {
-            font-size: 1.65rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        body:not(.dark-mode) .section h3 {
-            color: var(--text-dark);
-        }
-
-        /* About Section */
-        .about-intro p {
-            margin-bottom: 1.25rem;
-            line-height: 1.8;
-            font-size: 1.02rem;
-            color: var(--text-secondary-dark);
-        }
-
-        body:not(.dark-mode) .about-intro p {
-            color: var(--text-secondary);
-        }
-
-        .skills-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-dark);
-        }
-
-        body:not(.dark-mode) .skills-section {
-            border-top-color: var(--border-light);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .skill-category {
-            background: var(--bg-dark-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-dark);
-            padding: 1.25rem;
-            border-radius: var(--radius-lg);
-            transition: all 0.3s ease;
-        }
-
-        body:not(.dark-mode) .skill-category {
-            background: var(--bg-light-2);
-            border-color: var(--border-light);
-        }
-
-        .skill-category:hover {
-            border-color: var(--cyan-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.15);
-        }
-
-        .skill-category h5 {
-            font-size: 0.98rem;
-            font-weight: 700;
-            color: var(--cyan-primary);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-category p {
-            font-size: 0.88rem;
-            line-height: 1.6;
-            color: var(--text-secondary-dark);
-        }
-
-        body:not(.dark-mode) .skill-category p {
-            color: var(--text-secondary);
-        }
-
-        .about-cv-wrapper {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-dark);
-        }
-
-        body:not(.dark-mode) .about-cv-wrapper {
-            border-top-color: var(--border-light);
-        }
-
-        /* ========================================
-           FLAGSHIP HERO SHOWCASE - AXIVON SAAS
-           ======================================== */
-        .flagship-card {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(10, 15, 27, 0.96) 100%);
-            border-radius: var(--radius-xl);
-            padding: 2.25rem;
-            margin-bottom: 3.5rem;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.18);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-        }
-
-        body:not(.dark-mode) .flagship-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f4f9 100%);
-            border-color: rgba(0, 242, 254, 0.5);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08), 0 0 25px rgba(0, 242, 254, 0.2);
-        }
-
-        .flagship-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-cyber);
-            box-shadow: 0 0 15px var(--cyan-primary);
-        }
-
-        .flagship-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 242, 254, 0.3);
-            border-color: var(--cyan-primary);
-        }
-
-        .flagship-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .flagship-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.45rem 1.1rem;
-            border-radius: var(--radius-full);
-            background: linear-gradient(90deg, rgba(0, 242, 254, 0.15), rgba(255, 140, 0, 0.15));
-            border: 1px solid rgba(0, 242, 254, 0.5);
-            color: var(--cyan-primary);
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
-        }
-
-        .flagship-badge .pulsing-star {
-            color: var(--amber-primary);
-            animation: pulse-star 2s infinite ease-in-out;
-        }
-
-        @keyframes pulse-star {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--amber-primary)); }
-            50% { transform: scale(1.3); filter: drop-shadow(0 0 8px var(--amber-primary)); }
-        }
-
-        .flagship-title {
-            font-size: 1.85rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.5rem;
-        }
-
-        .cyber-gradient-text {
-            background: var(--gradient-cyber);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.1rem;
-            font-weight: 800;
-        }
-
-        .title-sub {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        body:not(.dark-mode) .title-sub {
-            color: var(--text-dark);
-        }
-
-        .flagship-desc {
-            font-size: 0.98rem;
-            line-height: 1.75;
-            color: var(--text-secondary-dark);
-            margin-top: 1rem;
-            margin-bottom: 1.75rem;
-        }
-
-        body:not(.dark-mode) .flagship-desc {
-            color: var(--text-secondary);
-        }
-
-        .flagship-features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            flex-direction: column;
             gap: 1.25rem;
-            margin-bottom: 1.75rem;
         }
 
-        .flagship-feature-box {
-            background: rgba(0, 242, 254, 0.04);
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            border-radius: var(--radius-lg);
-            padding: 1.1rem;
+        .contact-links {
             display: flex;
-            gap: 0.9rem;
-            align-items: flex-start;
-            transition: all 0.3s ease;
+            flex-direction: column;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        body:not(.dark-mode) .flagship-feature-box {
-            background: rgba(0, 242, 254, 0.06);
-            border-color: rgba(0, 242, 254, 0.2);
+        .contact-links a:hover {
+            color: var(--text-primary);
         }
 
-        .flagship-feature-box:hover {
-            background: rgba(0, 242, 254, 0.09);
-            border-color: var(--cyan-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.18);
+        .socials-row {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
         }
 
-        .feature-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: var(--radius-md);
-            background: rgba(0, 242, 254, 0.15);
-            color: var(--cyan-primary);
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             display: grid;
             place-items: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .feature-info h6 {
-            font-size: 0.92rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
-        }
-
-        body:not(.dark-mode) .feature-info h6 {
-            color: var(--text-dark);
-        }
-
-        .feature-info p {
-            font-size: 0.8rem;
-            color: var(--text-secondary-dark);
-            line-height: 1.45;
-        }
-
-        body:not(.dark-mode) .feature-info p {
+            font-size: 1rem;
             color: var(--text-secondary);
+            transition: all 0.2s ease;
         }
 
-        .flagship-tags .tag {
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--cyan-primary);
-            border-color: rgba(0, 242, 254, 0.4);
-            padding: 0.4rem 0.85rem;
-            font-size: 0.82rem;
-        }
-
-        .flagship-tags .tag:hover {
-            background: var(--gradient-cyber);
-            color: #070a12;
-            border-color: transparent;
-        }
-
-        /* Standard Cards & Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--bg-dark-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 1.75rem;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-dark);
-            border-left: 4px solid var(--cyan-primary);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body:not(.dark-mode) .card {
-            background: var(--bg-light-2);
-            border-color: var(--border-light);
-            border-left-color: var(--amber-primary);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--cyan-primary);
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.2);
-        }
-
-        .card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--text-light);
-        }
-
-        body:not(.dark-mode) .card h4 {
-            color: var(--text-dark);
-        }
-
-        .card-meta {
-            font-size: 0.85rem;
-            color: var(--text-secondary-dark);
-            margin-bottom: 0.75rem;
-        }
-
-        body:not(.dark-mode) .card-meta {
-            color: var(--text-secondary);
-        }
-
-        .card-meta-accent {
-            color: var(--cyan-primary);
-            font-weight: 600;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-secondary-dark);
-            margin-bottom: 1.25rem;
-        }
-
-        body:not(.dark-mode) .card-desc {
-            color: var(--text-secondary);
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .tag {
-            background: rgba(255, 140, 0, 0.1);
-            color: var(--amber-primary);
-            padding: 0.35rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 140, 0, 0.35);
-            transition: all 0.25s ease;
-        }
-
-        .tag:hover {
-            background: var(--gradient-amber);
-            color: white;
-            border-color: transparent;
+        .social-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+            background: var(--bg-pill);
             transform: translateY(-1px);
         }
 
-        /* Project Subtitles & Cards */
-        .project-subtitle {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            border-bottom: 1px solid var(--border-dark);
-            padding-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        body:not(.dark-mode) .project-subtitle {
-            color: var(--text-dark);
-            border-bottom-color: var(--border-light);
-        }
-
-        .project-card {
-            background: var(--bg-dark-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-dark);
-            border-left: 4px solid var(--cyan-primary);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body:not(.dark-mode) .project-card {
-            background: var(--bg-light-2);
-            border-color: var(--border-light);
-            border-left-color: var(--amber-primary);
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--cyan-primary);
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.2);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .project-title-area {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-light);
-        }
-
-        body:not(.dark-mode) .project-title {
-            color: var(--text-dark);
-        }
-
-        /* Status Badges */
-        .status-badge {
+        .cv-button-clean {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.25rem 0.65rem;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1rem;
+            border-radius: var(--radius-sm);
+            background: var(--accent-contrast);
+            color: var(--accent-contrast-inv);
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid var(--accent-contrast);
+            transition: all 0.2s ease;
+            margin-top: 0.25rem;
+        }
+
+        .cv-button-clean:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================================
+           CONTEÚDO PRINCIPAL (FLUXO ORGÂNICO & CONTÍNUO)
+           ========================================================================== */
+        .content-main {
+            padding: 5rem 0 6rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6.5rem;
+        }
+
+        .section-block {
+            scroll-margin-top: 5rem;
+        }
+
+        .section-heading {
+            margin-bottom: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-primary);
+        }
+
+        .heading-line {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        /* ==========================================================================
+           SOBRE MIM (SEM CARDS — TEXTO PURO, ELEGANTE E HUMANO)
+           ========================================================================== */
+        .about-prose {
+            display: flex;
+            flex-direction: column;
+            gap: 1.35rem;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            max-width: 780px;
+        }
+
+        .about-prose p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           COMPETÊNCIAS TÉCNICAS (CLEAN MONOCHROME)
+           ========================================================================== */
+        .skills-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.35rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .skill-group:hover {
+            border-color: var(--border-hover);
+        }
+
+        .skill-group-title {
+            font-size: 0.88rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            color: var(--text-primary);
+            margin-bottom: 0.85rem;
         }
 
-        .status-badge.online {
-            background-color: rgba(0, 255, 204, 0.12);
-            color: var(--neon-green);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-        }
-
-        .status-badge.production {
-            background-color: rgba(0, 242, 254, 0.12);
-            color: var(--cyan-primary);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-        }
-
-        .pulsing-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: currentColor;
-            box-shadow: 0 0 6px currentColor;
-            animation: pulse-dot 1.5s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        .project-links {
+        .skill-tags-wrap {
             display: flex;
-            gap: 0.5rem;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
         }
 
-        .project-link {
-            color: var(--cyan-primary);
-            background: rgba(0, 242, 254, 0.08);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 700;
+        .tag-clean {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            padding: 0.25rem 0.55rem;
+            border-radius: var(--radius-xs);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            transition: all 0.15s ease;
+        }
+
+        .tag-clean:hover {
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+        }
+
+        /* ==========================================================================
+           PROJETOS (CLEAN EDITORIAL & PRODUCT-GRADE)
+           ========================================================================== */
+        .projects-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Flagship JusGrowth Card */
+        .flagship-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: border-color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .flagship-box:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .flagship-tag-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge-clean {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .badge-status {
+            font-size: 0.74rem;
+            font-weight: 500;
+            color: var(--text-secondary);
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            padding: 0.4rem 0.85rem;
+            gap: 0.45rem;
+        }
+
+        .flagship-title-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .flagship-name {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .flagship-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .action-arrow-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-pill);
+            transition: all 0.2s ease;
+        }
+
+        .action-arrow-link:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-pill-hover);
+            transform: translateY(-1px);
+        }
+
+        .project-explanation {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid de Destaques Técnicos do JusGrowth */
+        .flagship-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-item {
+            padding: 0.85rem;
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+        }
+
+        .spec-item-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-item-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* Grid de Sistemas Secundários */
+        .projects-compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .project-item-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
         }
 
-        .project-link:hover {
-            color: #070a12;
-            background: var(--gradient-cyber);
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--cyan-glow);
+        .project-item-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
         }
 
-        .project-desc {
-            font-size: 0.92rem;
+        .project-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.65rem;
+        }
+
+        .project-item-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .project-item-text {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
             line-height: 1.65;
-            color: var(--text-secondary-dark);
             margin-bottom: 1.25rem;
         }
 
-        body:not(.dark-mode) .project-desc {
+        .tech-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .mono-pill {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
             color: var(--text-secondary);
         }
 
-        /* Controls Bar (Theme & Lang) */
-        .controls-bar {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
+        /* ==========================================================================
+           EXPERIÊNCIA (TIMELINE LIMPA)
+           ========================================================================== */
+        .timeline-clean {
             display: flex;
-            gap: 0.75rem;
-            z-index: 1000;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .toggle-btn {
-            width: 2.75rem;
-            height: 2.75rem;
-            border-radius: var(--radius-full);
-            background: rgba(13, 19, 34, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--cyan-primary);
-            cursor: pointer;
+        .timeline-entry {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.6rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .timeline-entry:hover {
+            border-color: var(--border-hover);
+        }
+
+        .timeline-top {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-role-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .timeline-period {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-org {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+            font-weight: 500;
+        }
+
+        .timeline-paragraph {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        /* ==========================================================================
+           FORMAÇÃO ACADÊMICA & IDIOMAS
+           ========================================================================== */
+        .education-clean-grid {
             display: grid;
-            place-items: center;
-            color: var(--cyan-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
         }
 
-        body:not(.dark-mode) .toggle-btn {
-            background: #ffffff;
-            border-color: var(--amber-primary);
-            color: var(--amber-primary);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .education-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.4rem;
+            transition: border-color 0.2s ease;
         }
 
-        .toggle-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--cyan-glow);
+        .education-item:hover {
+            border-color: var(--border-hover);
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .container-main {
+        .education-course {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .education-place {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .education-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .site-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .back-top-link {
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .back-top-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* ==========================================================================
+           RESPONSIVIDADE
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .layout-wrapper {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1.5rem;
             }
 
             .sidebar {
-                grid-column: 1;
-                width: 100%;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border-dark);
-                padding: 1.75rem 1.25rem;
                 position: relative;
-            }
-
-            .content {
-                grid-column: 1;
-                padding: 1.75rem 1.25rem;
-                max-height: none;
-                margin-top: 0;
+                height: auto;
+                padding: 4rem 0 2rem 0;
+                border-bottom: 1px solid var(--border-subtle);
             }
 
             .sidebar-nav {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 0.75rem;
+                display: none;
             }
 
-            .flagship-card {
-                padding: 1.5rem;
-            }
-
-            .cyber-gradient-text {
-                font-size: 1.75rem;
-            }
-
-            .flagship-features-grid {
-                grid-template-columns: 1fr;
+            .content-main {
+                padding: 2.5rem 0 5rem 0;
+                gap: 5rem;
             }
 
             .controls-bar {
-                top: auto;
-                bottom: 1.5rem;
-                right: 1.5rem;
+                top: 1rem;
+                right: 1.25rem;
             }
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+        @media (max-width: 640px) {
+            .layout-wrapper {
+                padding: 0 1.15rem;
+            }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
+            .profile-name {
+                font-size: 1.85rem;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--cyan-primary);
-            border-radius: var(--radius-md);
-            box-shadow: 0 0 10px var(--cyan-glow);
-        }
+            .projects-compact-grid {
+                grid-template-columns: 1fr;
+            }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--amber-primary);
-        }
-
-        body:not(.dark-mode) ::-webkit-scrollbar-track {
-            background: var(--bg-light);
-        }
-
-        body:not(.dark-mode) ::-webkit-scrollbar-thumb {
-            background: var(--amber-primary);
+            .flagship-box {
+                padding: 1.4rem;
+            }
         }
     </style>
 </head>
 
-<body>
-    <div class="controls-bar">
-        <button class="toggle-btn" id="langToggle" aria-label="Alternar idioma" title="Toggle Language">
-            <i class="bi bi-globe"></i>
-        </button>
-        <button class="toggle-btn" id="themeToggle" aria-label="Alternar tema" title="Toggle Theme">
-            <i class="bi bi-moon-fill"></i>
-        </button>
-    </div>
+<body class="dark-mode">
 
-    <div class="container-main">
-        <!-- Sidebar -->
+    <!-- Floating Theme & Language Bar (Black & White Style) -->
+    <aside class="controls-bar" aria-label="Preferências do Usuário">
+        <button class="control-pill-btn" id="langToggle" aria-label="Alternar Idioma" title="Mudar Idioma / Switch Language">
+            <i class="bi bi-translate"></i>
+            <span id="langLabel">EN</span>
+        </button>
+        <div class="control-divider"></div>
+        <button class="control-pill-btn" id="themeToggle" aria-label="Alternar Tema" title="Alternar Dark / Light Mode">
+            <i class="bi bi-moon-fill" id="themeIcon"></i>
+        </button>
+    </aside>
+
+    <div class="layout-wrapper">
+        <!-- ==========================================================================
+             STICKY SIDEBAR (MINIMALISTA, MONOCROMÁTICA & HUMANA)
+             ========================================================================== -->
         <aside class="sidebar">
-            <h1>Guilherme<br>Oliveira</h1>
-            <p class="subtitle" data-pt="Desenvolvedor Backend" data-en="Backend Developer">Desenvolvedor Backend</p>
-            <p class="tagline" data-pt="APIs escaláveis e otimizadas" data-en="Scalable & optimized APIs">APIs
-                escaláveis e otimizadas</p>
+            <div class="sidebar-header">
+                <div class="identity-row">
+                    <div class="avatar-monogram" aria-hidden="true">GO</div>
+                    <div class="status-clean-pill">
+                        <span class="dot-subtle"></span>
+                        <span data-pt="Disponível para projetos" data-en="Open for opportunities">Disponível para projetos</span>
+                    </div>
+                </div>
 
-            <div class="contact-info">
-                <p><i class="bi bi-envelope"></i> <a href="mailto:gaoliveira2077@gmail.com">gaoliveira2077@gmail.com</a>
+                <div>
+                    <h1 class="profile-name">Guilherme<br>Oliveira</h1>
+                    <p class="profile-title" data-pt="Engenheiro de Software & Backend" data-en="Software Engineer & Backend">
+                        Engenheiro de Software & Backend
+                    </p>
+                </div>
+
+                <p class="profile-bio"
+                    data-pt="Desenvolvo sistemas SaaS escaláveis, automações orientadas a eventos e arquiteturas backend resilientes com Python, Node.js e TypeScript."
+                    data-en="I build scalable SaaS systems, event-driven automations, and resilient backend architectures with Python, Node.js, and TypeScript.">
+                    Desenvolvo sistemas SaaS escaláveis, automações orientadas a eventos e arquiteturas backend resilientes com Python, Node.js e TypeScript.
                 </p>
-                <p><i class="bi bi-telephone"></i> +55 (85) 92164-6852</p>
+
+                <!-- Navigation List com Scrollspy Suave -->
+                <nav class="sidebar-nav" aria-label="Navegação Principal">
+                    <ul>
+                        <li>
+                            <a href="#about" class="nav-anchor active" data-nav="about">
+                                <span class="nav-line"></span>
+                                <span data-pt="Sobre" data-en="About">Sobre</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#skills" class="nav-anchor" data-nav="skills">
+                                <span class="nav-line"></span>
+                                <span data-pt="Competências" data-en="Skills">Competências</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#projects" class="nav-anchor" data-nav="projects">
+                                <span class="nav-line"></span>
+                                <span data-pt="Projetos" data-en="Projects">Projetos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#experience" class="nav-anchor" data-nav="experience">
+                                <span class="nav-line"></span>
+                                <span data-pt="Experiência" data-en="Experience">Experiência</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#education" class="nav-anchor" data-nav="education">
+                                <span class="nav-line"></span>
+                                <span data-pt="Formação" data-en="Education">Formação</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
-            <nav>
-                <ul class="sidebar-nav">
-                    <li><a href="#about" class="nav-link active" data-section="about"><i class="bi bi-person-fill"></i>
-                            <span data-pt="Sobre" data-en="About">Sobre</span></a></li>
-                    <li><a href="#experience" class="nav-link" data-section="experience"><i
-                                class="bi bi-briefcase-fill"></i> <span data-pt="Experiência"
-                                data-en="Experience">Experiência</span></a></li>
-                    <li><a href="#education" class="nav-link" data-section="education"><i
-                                class="bi bi-mortarboard-fill"></i> <span data-pt="Formação"
-                                data-en="Education">Formação</span></a></li>
-                    <li><a href="#projects" class="nav-link" data-section="projects"><i class="bi bi-folder-fill"></i>
-                            <span data-pt="Projetos" data-en="Projects">Projetos</span></a></li>
-                </ul>
-            </nav>
+            <!-- Footer da Sidebar -->
+            <div class="sidebar-footer">
+                <div class="contact-links">
+                    <a href="mailto:gaoliveira2077@gmail.com" title="Enviar E-mail">
+                        gaoliveira2077@gmail.com
+                    </a>
+                    <span>Brasil (Remoto / Global)</span>
+                </div>
 
-            <nav aria-label="Redes sociais">
-                <div class="social-links">
+                <div class="socials-row">
                     <a href="https://github.com/guilherme-0liveira-dev/" target="_blank" rel="noopener noreferrer"
-                        title="GitHub"><i class="bi bi-github"></i></a>
+                        class="social-btn" title="GitHub" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
                     <a href="https://linkedin.com/in/gaoliveira277" target="_blank" rel="noopener noreferrer"
-                        title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                </div>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="content">
-            <!-- About Section -->
-            <section id="about" class="section active">
-                <div class="about-intro">
-                    <p data-pt="Desenvolvedor Backend com sólida base em Python, JavaScript e SQL, focado em construir APIs escaláveis, seguras e de alto desempenho. Experiência em integração de sistemas, automação de processos e aplicação de boas práticas de arquitetura e código limpo (Clean Code, SOLID, DDD)."
-                        data-en="Backend developer with solid foundation in Python, JavaScript and SQL, focused on building scalable, secure and high-performance APIs. Experience in systems integration, process automation and application of best practices in software architecture and clean code (Clean Code, SOLID, DDD).">
-                        Desenvolvedor Backend com sólida base em Python, JavaScript e SQL, focado em construir APIs
-                        escaláveis, seguras e de alto desempenho. Experiência em integração de sistemas, automação de
-                        processos e aplicação de boas práticas de arquitetura e código limpo (Clean Code, SOLID, DDD).
-                    </p>
-
-                    <p data-pt="Atuação em projetos acadêmicos e pessoais com microsserviços, controle de versão com Git/GitHub e metodologias ágeis (Scrum e Kanban). Apaixonado por otimização, aprendizado contínuo e desenvolvimento de soluções robustas e eficientes."
-                        data-en="Working on academic and personal projects with microservices, version control with Git/GitHub and agile methodologies (Scrum and Kanban). Passionate about optimization, continuous learning and development of robust and efficient solutions.">
-                        Atuação em projetos acadêmicos e pessoais com microsserviços, controle de versão com Git/GitHub
-                        e metodologias ágeis (Scrum e Kanban). Apaixonado por otimização, aprendizado contínuo e
-                        desenvolvimento de soluções robustas e eficientes.</p>
-                </div>
-
-                <div class="skills-section">
-                    <h3 data-pt="Competências Técnicas" data-en="Technical Skills">Competências Técnicas</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h5 data-pt="Linguagens" data-en="Languages">Linguagens</h5>
-                            <p>Python, JavaScript/TypeScript, PHP, Ruby, SQL (Postgres, MySQL), HTML5/CSS3</p>
-                        </div>
-                        <div class="skill-category">
-                            <h5 data-pt="Backend & APIs" data-en="Backend & APIs">Backend & APIs</h5>
-                            <p>FastAPI, Express.js, Node.js, Nest.js, Yii2 (PHP), WebSockets, REST APIs, JWT Auth, Rate
-                                Limiting</p>
-                        </div>
-                        <div class="skill-category">
-                            <h5 data-pt="Automação & Scraping" data-en="Automation & Scraping">Automação & Scraping</h5>
-                            <p>Playwright (Stealth), Telethon (Telegram API), BeautifulSoup4, HTTPX, Puppeteer,
-                                Proxy/Header Rotation</p>
-                        </div>
-                        <div class="skill-category">
-                            <h5 data-pt="Bancos de Dados & Cache" data-en="Databases & Caching">Bancos de Dados & Cache
-                            </h5>
-                            <p>PostgreSQL, MySQL, Redis (Caching, Queues via Celery & arq), SQLite, SQLAlchemy 2.0,
-                                Prisma ORM</p>
-                        </div>
-                        <div class="skill-category">
-                            <h5 data-pt="Frontend & Dashboards" data-en="Frontend & Dashboards">Frontend & Dashboards
-                            </h5>
-                            <p>Next.js 14/15, React, Tailwind CSS 3 & 4, Streamlit, Framer Motion, Recharts, Responsive
-                                Layouts</p>
-                        </div>
-                        <div class="skill-category">
-                            <h5 data-pt="DevOps & Infraestrutura" data-en="DevOps & Infrastructure">DevOps & Infra</h5>
-                            <p>Docker, Docker Compose, Nginx, Git, GitHub Actions, Linux/Bash, Vercel, Railway,
-                                Healthchecking/K8s probes</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="about-cv-wrapper">
-                    <a href="assets/Guilherme-Oliveira_Software-Engineer-pt.pdf" class="cv-button" id="cvBtn" download>
-                        <i class="bi bi-download"></i> <span data-pt="BAIXAR CV COMPLETO" data-en="DOWNLOAD CV">BAIXAR
-                            CV</span>
+                        class="social-btn" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="https://wa.me/5585921646852" target="_blank" rel="noopener noreferrer"
+                        class="social-btn" title="WhatsApp" aria-label="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
                     </a>
                 </div>
+
+                <a href="assets/Guilherme-Oliveira_Software-Engineer-pt.pdf" class="cv-button-clean" id="cvBtn" download>
+                    <i class="bi bi-arrow-down-circle"></i>
+                    <span data-pt="Currículo (PDF)" data-en="Resume (PDF)">Currículo (PDF)</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- ==========================================================================
+             FLUXO DE LEITURA CONTÍNUA
+             ========================================================================== -->
+        <main class="content-main">
+
+            <!-- SOBRE MIM (SEM CARDS — FLUIDO & NATURAL) -->
+            <section id="about" class="section-block">
+                <div class="section-heading">
+                    <h2 class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+                    <div class="heading-line"></div>
+                </div>
+
+                <div class="about-prose">
+                    <p data-pt="Engenheiro de Software com sólida trajetória voltada ao <strong>desenvolvimento Backend, arquitetura de microsserviços e automação de sistemas complexos</strong>. Meu trabalho é orientado a resolver problemas reais de negócio através de código claro, previsível e eficiente, projetando APIs de alto rendimento, comunicação em tempo real via WebSockets e integração consistente de dados."
+                        data-en="Software Engineer with a solid background in <strong>Backend development, microservices architecture, and complex system automations</strong>. My work focuses on solving real business challenges through clean, predictable, and maintainable code — designing high-throughput APIs, real-time WebSockets communication, and robust data pipelines.">
+                        Engenheiro de Software com sólida trajetória voltada ao <strong>desenvolvimento Backend, arquitetura de microsserviços e automação de sistemas complexos</strong>. Meu trabalho é orientado a resolver problemas reais de negócio através de código claro, previsível e eficiente, projetando APIs de alto rendimento, comunicação em tempo real via WebSockets e integração consistente de dados.
+                    </p>
+
+                    <p data-pt="Tenho experiência prática na construção de plataformas SaaS completas (como CRMs jurídicos com WhatsApp multi-atendente e motores de agendamento concorrente), pipelines assíncronos com Redis e crawlers resilientes com bypass de proteções antibot. Adoto boas práticas de <strong>Clean Code, SOLID, Arquitetura Limpa e Domain-Driven Design (DDD)</strong> para garantir manutenibilidade e escalabilidade no longo prazo."
+                        data-en="I have hands-on experience building complete SaaS products (such as legal CRMs with multi-agent WhatsApp messaging and concurrent booking systems), asynchronous task queues with Redis, and resilient web scrapers bypassing antibot protections. I uphold <strong>Clean Code, SOLID, Clean Architecture, and Domain-Driven Design (DDD)</strong> to ensure long-term maintainability and scalability.">
+                        Tenho experiência prática na construção de plataformas SaaS completas (como CRMs jurídicos com WhatsApp multi-atendente e motores de agendamento concorrente), pipelines assíncronos com Redis e crawlers resilientes com bypass de proteções antibot. Adoto boas práticas de <strong>Clean Code, SOLID, Arquitetura Limpa e Domain-Driven Design (DDD)</strong> para garantir manutenibilidade e escalabilidade no longo prazo.
+                    </p>
+                </div>
             </section>
 
-            <!-- Experience Section -->
-            <section id="experience" class="section">
-                <h3 data-pt="Experiência Profissional" data-en="Professional Experience">Experiência Profissional</h3>
-                <div class="cards-grid">
-                    <article class="card">
-                        <h4 data-pt="Desenvolvedor Backend" data-en="Backend Developer">Desenvolvedor Backend</h4>
-                        <div class="card-meta">
-                            <span class="card-meta-accent" data-pt="Projetos Pessoais e Acadêmicos"
-                                data-en="Personal & Academic Projects">Projetos Pessoais e Acadêmicos</span>
+            <!-- COMPETÊNCIAS TÉCNICAS (CLEAN MONOCHROME) -->
+            <section id="skills" class="section-block">
+                <div class="section-heading">
+                    <h2 class="section-title" data-pt="Competências Técnicas" data-en="Technical Skills">Competências Técnicas</h2>
+                    <div class="heading-line"></div>
+                </div>
+
+                <div class="skills-list-grid">
+                    <div class="skill-group">
+                        <h3 class="skill-group-title" data-pt="Linguagens & Core" data-en="Languages & Core">Linguagens & Core</h3>
+                        <div class="skill-tags-wrap">
+                            <span class="tag-clean">Python</span>
+                            <span class="tag-clean">TypeScript</span>
+                            <span class="tag-clean">JavaScript</span>
+                            <span class="tag-clean">SQL</span>
+                            <span class="tag-clean">PHP</span>
+                            <span class="tag-clean">Ruby</span>
                         </div>
-                        <p class="card-meta" data-pt="2023 - Presente" data-en="2023 - Present">2023 - Presente</p>
-                        <p class="card-desc"
-                            data-pt="Desenvolvimento de APIs RESTful para comunicação entre sistemas e frontends. Implementação de lógica de negócios e processamento de dados com foco em performance."
-                            data-en="Development of RESTful APIs for communication between systems and frontends. Implementation of business logic and data processing with focus on performance.">
-                            Desenvolvimento de APIs RESTful para comunicação entre sistemas e frontends. Implementação
-                            de lógica de negócios e processamento de dados com foco em performance.</p>
-                        <div class="card-tags">
-                            <span class="tag">Ruby</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">Express.js</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">MySQL</span>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group-title" data-pt="Backend & APIs" data-en="Backend & APIs">Backend & APIs</h3>
+                        <div class="skill-tags-wrap">
+                            <span class="tag-clean">FastAPI</span>
+                            <span class="tag-clean">Node.js</span>
+                            <span class="tag-clean">Express.js</span>
+                            <span class="tag-clean">NestJS</span>
+                            <span class="tag-clean">WebSockets</span>
+                            <span class="tag-clean">RESTful</span>
+                            <span class="tag-clean">JWT / Auth</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group-title" data-pt="Bancos & Filas" data-en="Databases & Queues">Bancos & Filas</h3>
+                        <div class="skill-tags-wrap">
+                            <span class="tag-clean">PostgreSQL</span>
+                            <span class="tag-clean">Redis</span>
+                            <span class="tag-clean">MySQL</span>
+                            <span class="tag-clean">Prisma ORM</span>
+                            <span class="tag-clean">SQLAlchemy 2.0</span>
+                            <span class="tag-clean">Celery</span>
+                            <span class="tag-clean">arq</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group-title" data-pt="Automação & Scraping" data-en="Automation & Scraping">Automação & Scraping</h3>
+                        <div class="skill-tags-wrap">
+                            <span class="tag-clean">Playwright Stealth</span>
+                            <span class="tag-clean">Telethon (Telegram)</span>
+                            <span class="tag-clean">HTTPX</span>
+                            <span class="tag-clean">BeautifulSoup4</span>
+                            <span class="tag-clean">WhatsApp Cloud API</span>
+                            <span class="tag-clean">ManyChat</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group-title" data-pt="DevOps & Infra" data-en="DevOps & Infra">DevOps & Infra</h3>
+                        <div class="skill-tags-wrap">
+                            <span class="tag-clean">Docker</span>
+                            <span class="tag-clean">Docker Compose</span>
+                            <span class="tag-clean">GitHub Actions</span>
+                            <span class="tag-clean">Nginx</span>
+                            <span class="tag-clean">Linux / Bash</span>
+                            <span class="tag-clean">Vercel</span>
+                            <span class="tag-clean">Railway</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3 class="skill-group-title" data-pt="Frontend Integrado" data-en="Frontend Integration">Frontend Integrado</h3>
+                        <div class="skill-tags-wrap">
+                            <span class="tag-clean">Next.js 14/15</span>
+                            <span class="tag-clean">React 19</span>
+                            <span class="tag-clean">Tailwind CSS</span>
+                            <span class="tag-clean">Streamlit</span>
+                            <span class="tag-clean">shadcn/ui</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJETOS EM DESTAQUE & SISTEMAS EM PRODUÇÃO -->
+            <section id="projects" class="section-block">
+                <div class="section-heading">
+                    <h2 class="section-title" data-pt="Projetos em Produção" data-en="Production Projects">Projetos em Produção</h2>
+                    <div class="heading-line"></div>
+                </div>
+
+                <div class="projects-stream">
+
+                    <!-- Flagship: JusGrowth SaaS Legal CRM -->
+                    <article class="flagship-box">
+                        <div class="flagship-tag-row">
+                            <span class="badge-clean" data-pt="SaaS Flagship" data-en="Flagship SaaS">SaaS Flagship</span>
+                            <span class="badge-status">
+                                <span class="dot-subtle"></span>
+                                <span data-pt="Em Produção & Online" data-en="Live & In Production">Em Produção & Online</span>
+                            </span>
+                        </div>
+
+                        <div class="flagship-title-row">
+                            <div>
+                                <span class="flagship-name">JusGrowth</span>
+                                <span class="flagship-sub" data-pt="SaaS CRM & Atendimento para Advogados" data-en="Legal CRM & Multi-Agent SaaS">SaaS CRM & Atendimento para Advogados</span>
+                            </div>
+
+                            <a href="https://jusgrowth.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="action-arrow-link" title="Acessar Plataforma">
+                                <span data-pt="Acessar Plataforma" data-en="Visit Platform">Acessar Plataforma</span>
+                                <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                        <p class="project-explanation"
+                            data-pt="Plataforma SaaS CRM desenvolvida sob medida para escritórios jurídicos e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de casos e prospecção, atribuição fechada de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração de processos e assistente de IA em conformidade com o Provimento OAB 205/2021."
+                            data-en="Legal SaaS CRM engineered specifically for law firms and independent lawyers. Integrates real-time multi-agent WhatsApp messaging via WebSockets, visual Kanban legal pipeline, closed-loop campaign ROI attribution via Meta Ads Insights, automated digital contract signing via ZapSign, court tracking sync, and an AI assistant compliant with OAB Regulation 205/2021.">
+                            Plataforma SaaS CRM desenvolvida sob medida para escritórios jurídicos e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de casos e prospecção, atribuição fechada de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração de processos e assistente de IA em conformidade com o Provimento OAB 205/2021.
+                        </p>
+
+                        <div class="flagship-specs">
+                            <div class="spec-item">
+                                <div class="spec-item-title" data-pt="WhatsApp Multi-Atendente" data-en="Multi-Agent WhatsApp">WhatsApp Multi-Atendente</div>
+                                <div class="spec-item-desc" data-pt="Atendimento centralizado com sincronia em tempo real via WebSockets." data-en="Centralized messaging synced in real-time via WebSockets.">Atendimento centralizado com sincronia em tempo real via WebSockets.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-item-title" data-pt="Pipeline Kanban Jurídico" data-en="Kanban Legal Pipeline">Pipeline Kanban Jurídico</div>
+                                <div class="spec-item-desc" data-pt="Gestão visual de leads, contratos e novos casos." data-en="Visual pipeline for leads, active cases, and agreements.">Gestão visual de leads, contratos e novos casos.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-item-title" data-pt="Meta Ads & ZapSign" data-en="Meta Ads & ZapSign">Meta Ads & ZapSign</div>
+                                <div class="spec-item-desc" data-pt="Atribuição de ROI por anúncio e assinatura digital no chat." data-en="Campaign ROI tracking and digital signing directly in chat.">Atribuição de ROI por anúncio e assinatura digital no chat.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-item-title" data-pt="IA & Provimento OAB 205/2021" data-en="AI & OAB Ethical Compliance">IA & Provimento OAB 205/2021</div>
+                                <div class="spec-item-desc" data-pt="Triagem jurídica orientada às regras éticas da advocacia." data-en="Intelligent legal triage strictly compliant with ethical rules.">Triagem jurídica orientada às regras éticas da advocacia.</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-pill-row">
+                            <span class="mono-pill">Next.js 15</span>
+                            <span class="mono-pill">TypeScript</span>
+                            <span class="mono-pill">Node.js / Express</span>
+                            <span class="mono-pill">WebSockets</span>
+                            <span class="mono-pill">PostgreSQL</span>
+                            <span class="mono-pill">Prisma ORM</span>
+                            <span class="mono-pill">Meta Ads API</span>
+                            <span class="mono-pill">ZapSign</span>
+                            <span class="mono-pill">Tailwind CSS 4</span>
                         </div>
                     </article>
 
-                    <article class="card">
-                        <h4 data-pt="Desenvolvimento Full Stack" data-en="Full Stack Development">Desenvolvimento Full
-                            Stack</h4>
-                        <div class="card-meta">
-                            <span class="card-meta-accent" data-pt="Projetos Acadêmicos"
-                                data-en="Academic Projects">Projetos Acadêmicos</span>
+                    <!-- Grade dos Outros Sistemas em Produção -->
+                    <div class="projects-compact-grid">
+
+                        <!-- Axivon SaaS -->
+                        <article class="project-item-card">
+                            <div>
+                                <div class="project-item-header">
+                                    <h3 class="project-item-title">Axivon SaaS</h3>
+                                    <span class="badge-status">
+                                        <span class="dot-subtle"></span>
+                                        <span data-pt="Produção" data-en="Production">Produção</span>
+                                    </span>
+                                </div>
+                                <p class="project-item-text"
+                                    data-pt="Plataforma SaaS Multi-Tenant projetada para gestão de agendamentos e automação de fluxos operacionais. Conta com isolamento estrito de dados por tenant, confirmações automáticas via WhatsApp/Telegram, motor de concorrência com WebSockets e dashboard analítico."
+                                    data-en="High-performance Multi-Tenant SaaS platform for scheduling and workflow automation. Features strict per-tenant data isolation, WhatsApp/Telegram notifications, real-time concurrency engine via WebSockets, and analytics.">
+                                    Plataforma SaaS Multi-Tenant projetada para gestão de agendamentos e automação de fluxos operacionais. Conta com isolamento estrito de dados por tenant, confirmações automáticas via WhatsApp/Telegram, motor de concorrência com WebSockets e dashboard analítico.
+                                </p>
+                            </div>
+                            <div class="tech-pill-row">
+                                <span class="mono-pill">Next.js 15</span>
+                                <span class="mono-pill">FastAPI</span>
+                                <span class="mono-pill">PostgreSQL</span>
+                                <span class="mono-pill">Prisma ORM</span>
+                                <span class="mono-pill">Redis</span>
+                                <span class="mono-pill">Docker</span>
+                            </div>
+                        </article>
+
+                        <!-- BetBot Pro -->
+                        <article class="project-item-card">
+                            <div>
+                                <div class="project-item-header">
+                                    <h3 class="project-item-title">BetBot Pro</h3>
+                                    <a href="https://betbotting.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                        class="action-arrow-link" title="Acessar BetBot Pro">
+                                        <span data-pt="Acessar" data-en="Live">Acessar</span>
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </div>
+                                <p class="project-item-text"
+                                    data-pt="Motor de automação e execução em tempo real integrado ao Telegram. Captura tips via Telethon em milissegundos, extrai mercados e odds com NLP e RegEx estruturado, e executa rotinas headless com Playwright Stealth para contornar proteções antibot."
+                                    data-en="Real-time sports execution engine integrated with Telegram. Ingests tips in milliseconds via Telethon, extracts markets/odds using NLP and RegEx, and triggers headless flows with Playwright Stealth bypassing antibot filters.">
+                                    Motor de automação e execução em tempo real integrado ao Telegram. Captura tips via Telethon em milissegundos, extrai mercados e odds com NLP e RegEx estruturado, e executa rotinas headless com Playwright Stealth para contornar proteções antibot.
+                                </p>
+                            </div>
+                            <div class="tech-pill-row">
+                                <span class="mono-pill">Python</span>
+                                <span class="mono-pill">FastAPI</span>
+                                <span class="mono-pill">Playwright Stealth</span>
+                                <span class="mono-pill">Telethon</span>
+                                <span class="mono-pill">Redis / arq</span>
+                            </div>
+                        </article>
+
+                        <!-- Roulette Analytics Pro -->
+                        <article class="project-item-card">
+                            <div>
+                                <div class="project-item-header">
+                                    <h3 class="project-item-title">Roulette Analytics Pro</h3>
+                                    <a href="https://blackcard-roulette.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                        class="action-arrow-link" title="Acessar Roulette Analytics">
+                                        <span data-pt="Acessar" data-en="Live">Acessar</span>
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </div>
+                                <p class="project-item-text"
+                                    data-pt="Plataforma de observabilidade estatística em tempo real de até 7 mesas simultâneas. Possui triggers de negócio dinâmicos, conexões persistentes WebSockets com subscribe/unsubscribe, fila assíncrona com Celery e painel Next.js 14."
+                                    data-en="Real-time statistical monitoring platform for up to 7 concurrent live tables. Features dynamic business triggers, persistent WebSockets with pub/sub patterns, Celery background workers, and Next.js 14 dashboard.">
+                                    Plataforma de observabilidade estatística em tempo real de até 7 mesas simultâneas. Possui triggers de negócio dinâmicos, conexões persistentes WebSockets com subscribe/unsubscribe, fila assíncrona com Celery e painel Next.js 14.
+                                </p>
+                            </div>
+                            <div class="tech-pill-row">
+                                <span class="mono-pill">Next.js 14</span>
+                                <span class="mono-pill">FastAPI</span>
+                                <span class="mono-pill">WebSockets</span>
+                                <span class="mono-pill">Celery</span>
+                                <span class="mono-pill">Redis</span>
+                            </div>
+                        </article>
+
+                        <!-- Affiliate Promo Engine -->
+                        <article class="project-item-card">
+                            <div>
+                                <div class="project-item-header">
+                                    <h3 class="project-item-title">Affiliate Promo Engine</h3>
+                                    <span class="badge-status">
+                                        <span class="dot-subtle"></span>
+                                        <span data-pt="Produção" data-en="Production">Produção</span>
+                                    </span>
+                                </div>
+                                <p class="project-item-text"
+                                    data-pt="Pipeline automatizado para monitoramento e conversão de promoções de e-commerces (Amazon, Mercado Livre, Shopee). Possui encurtamento oficial direto, scoring heurístico (0-100) acoplado a classificador estatístico e disparos automatizados para Telegram."
+                                    data-en="Automated promotion intelligence pipeline for major e-commerce platforms (Amazon, Mercado Livre, Shopee). Integrates official direct shorteners, a 0-100 heuristic scoring engine paired with an AI deal classifier, and Telegram broadcasting.">
+                                    Pipeline automatizado para monitoramento e conversão de promoções de e-commerces (Amazon, Mercado Livre, Shopee). Possui encurtamento oficial direto, scoring heurístico (0-100) acoplado a classificador estatístico e disparos automatizados para Telegram.
+                                </p>
+                            </div>
+                            <div class="tech-pill-row">
+                                <span class="mono-pill">Python</span>
+                                <span class="mono-pill">FastAPI</span>
+                                <span class="mono-pill">HTTPX / Scraping</span>
+                                <span class="mono-pill">Streamlit</span>
+                                <span class="mono-pill">PostgreSQL</span>
+                            </div>
+                        </article>
+
+                        <!-- API de Rastreio Postal -->
+                        <article class="project-item-card">
+                            <div>
+                                <div class="project-item-header">
+                                    <h3 class="project-item-title">API de Rastreio Postal</h3>
+                                    <a href="https://github.com/guilherme-0liveira-dev/Rastreamento_API" target="_blank"
+                                        rel="noopener noreferrer" class="action-arrow-link" title="Repositório no GitHub">
+                                        <i class="bi bi-github"></i> <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <p class="project-item-text"
+                                    data-pt="Aplicação moderna para rastreamento de encomendas em tempo real construída com Next.js 15, rotas de API resilientes e interface fluida com Tailwind CSS 4 e shadcn/ui. Integração tolerante a falhas com serviços postais."
+                                    data-en="Modern real-time parcel tracking application built with Next.js 15, resilient API routes, and a fluid interface leveraging Tailwind CSS 4 and shadcn/ui.">
+                                    Aplicação moderna para rastreamento de encomendas em tempo real construída com Next.js 15, rotas de API resilientes e interface fluida com Tailwind CSS 4 e shadcn/ui. Integração tolerante a falhas com serviços postais.
+                                </p>
+                            </div>
+                            <div class="tech-pill-row">
+                                <span class="mono-pill">Next.js 15</span>
+                                <span class="mono-pill">TypeScript</span>
+                                <span class="mono-pill">Tailwind CSS 4</span>
+                                <span class="mono-pill">API Routes</span>
+                            </div>
+                        </article>
+
+                        <!-- Enterprise Products CRUD -->
+                        <article class="project-item-card">
+                            <div>
+                                <div class="project-item-header">
+                                    <h3 class="project-item-title">Enterprise Inventory & Orders</h3>
+                                    <a href="https://github.com/guilherme-0liveira-dev/CRUD-Completo/tree/develop" target="_blank"
+                                        rel="noopener noreferrer" class="action-arrow-link" title="Repositório no GitHub">
+                                        <i class="bi bi-github"></i> <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <p class="project-item-text"
+                                    data-pt="Arquitetura de backend robusta para gestão de pedidos, estoque e autenticação multi-perfil. Desenvolvido com Node.js, Express 5, validação com Zod, documentação OpenAPI/Swagger e testes automatizados com Jest."
+                                    data-en="Robust backend architecture for inventory, order processing, and multi-role authentication. Developed with Node.js, Express 5, strict Zod validation, OpenAPI/Swagger docs, and automated testing with Jest.">
+                                    Arquitetura de backend robusta para gestão de pedidos, estoque e autenticação multi-perfil. Desenvolvido com Node.js, Express 5, validação com Zod, documentação OpenAPI/Swagger e testes automatizados com Jest.
+                                </p>
+                            </div>
+                            <div class="tech-pill-row">
+                                <span class="mono-pill">Node.js</span>
+                                <span class="mono-pill">Express 5</span>
+                                <span class="mono-pill">Prisma ORM</span>
+                                <span class="mono-pill">PostgreSQL</span>
+                                <span class="mono-pill">Zod</span>
+                                <span class="mono-pill">Jest</span>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIÊNCIA PROFISSIONAL -->
+            <section id="experience" class="section-block">
+                <div class="section-heading">
+                    <h2 class="section-title" data-pt="Experiência Profissional" data-en="Professional Experience">Experiência Profissional</h2>
+                    <div class="heading-line"></div>
+                </div>
+
+                <div class="timeline-clean">
+                    <article class="timeline-entry">
+                        <div class="timeline-top">
+                            <h3 class="timeline-role-title" data-pt="Engenheiro de Software & Backend" data-en="Software Engineer & Backend">
+                                Engenheiro de Software & Backend
+                            </h3>
+                            <span class="timeline-period" data-pt="2023 — Presente" data-en="2023 — Present">2023 — Presente</span>
                         </div>
-                        <p class="card-meta" data-pt="2023 - Presente" data-en="2023 - Present">2023 - Presente</p>
-                        <p class="card-desc"
-                            data-pt="Criação e otimização de modelos relacionais e consultas SQL. Integração com serviços externos e microsserviços internos com tratamento de erros robusto."
-                            data-en="Creation and optimization of relational models and SQL queries. Integration with external services and internal microservices with robust error handling.">
-                            Criação e otimização de modelos relacionais e consultas SQL. Integração com serviços
-                            externos e microsserviços internos com tratamento de erros robusto.</p>
-                        <div class="card-tags">
-                            <span class="tag">Node.js</span>
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Prisma</span>
-                            <span class="tag">Git</span>
-                            <span class="tag">Docker</span>
+                        <div class="timeline-org" data-pt="Projetos em Produção, SaaS & Freelance" data-en="Production SaaS & Independent Engineering">
+                            Projetos em Produção, SaaS & Freelance
+                        </div>
+                        <p class="timeline-paragraph"
+                            data-pt="Desenvolvimento e sustentação de ecossistemas web e APIs escaláveis. Implementação de fluxos de mensageria em tempo real, automação de dados e integrações com terceiros (WhatsApp Cloud API, Telegram Bot API, Meta Ads, ZapSign). Aplicação consistente de testes, microsserviços e isolamento de tenancies."
+                            data-en="Engineering and operating scalable web ecosystems and APIs. Implementation of real-time messaging workflows, data pipelines, and third-party integrations (WhatsApp Cloud API, Telegram, Meta Ads, ZapSign). Consistent application of automated tests, microservices, and tenant isolation.">
+                            Desenvolvimento e sustentação de ecossistemas web e APIs escaláveis. Implementação de fluxos de mensageria em tempo real, automação de dados e integrações com terceiros (WhatsApp Cloud API, Telegram Bot API, Meta Ads, ZapSign). Aplicação consistente de testes, microsserviços e isolamento de tenancies.
+                        </p>
+                        <div class="tech-pill-row">
+                            <span class="mono-pill">Python</span>
+                            <span class="mono-pill">FastAPI</span>
+                            <span class="mono-pill">Node.js</span>
+                            <span class="mono-pill">TypeScript</span>
+                            <span class="mono-pill">PostgreSQL</span>
+                            <span class="mono-pill">Redis</span>
+                            <span class="mono-pill">WebSockets</span>
+                            <span class="mono-pill">Docker</span>
                         </div>
                     </article>
 
-                    <article class="card">
-                        <h4 data-pt="Automação & Integração" data-en="Automation & Integration">Automação & Integração
-                        </h4>
-                        <div class="card-meta">
-                            <span class="card-meta-accent" data-pt="Projetos Pessoais"
-                                data-en="Personal Projects">Projetos Pessoais</span>
+                    <article class="timeline-entry">
+                        <div class="timeline-top">
+                            <h3 class="timeline-role-title" data-pt="Engenharia de Automações & Web Scraping" data-en="Automation Engineering & Web Scraping">
+                                Engenharia de Automações & Web Scraping
+                            </h3>
+                            <span class="timeline-period" data-pt="2023 — 2024" data-en="2023 — 2024">2023 — 2024</span>
                         </div>
-                        <p class="card-meta" data-pt="2023 - Presente" data-en="2023 - Present">2023 - Presente</p>
-                        <p class="card-desc"
-                            data-pt="Aplicação de tratamento de erros, modularização e testes automatizados. Foco em Clean Code, SOLID e boas práticas de desenvolvimento."
-                            data-en="Application of error handling, modularization and automated testing. Focus on Clean Code, SOLID and best development practices.">
-                            Aplicação de tratamento de erros, modularização e testes automatizados. Foco em Clean Code,
-                            SOLID e boas práticas de desenvolvimento.</p>
-                        <div class="card-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Selenium</span>
-                            <span class="tag">APIs</span>
-                            <span class="tag">CI/CD</span>
-                            <span class="tag">GitHub</span>
-                            <span class="tag">Clean Code</span>
+                        <div class="timeline-org" data-pt="Projetos Especializados de Inteligência de Mercado" data-en="Market Intelligence & Data Extraction">
+                            Projetos Especializados de Inteligência de Mercado
+                        </div>
+                        <p class="timeline-paragraph"
+                            data-pt="Arquitetura de bots resilientes com tratamento de exceções, rotação de headers e proxies, execução headless indetectável com Playwright Stealth e persistência otimizada com SQLAlchemy e Prisma."
+                            data-en="Architected resilient bots with robust exception handling, proxy/header rotation, stealth browser automation, and high-performance database persistence.">
+                            Arquitetura de bots resilientes com tratamento de exceções, rotação de headers e proxies, execução headless indetectável com Playwright Stealth e persistência otimizada com SQLAlchemy e Prisma.
+                        </p>
+                        <div class="tech-pill-row">
+                            <span class="mono-pill">Playwright</span>
+                            <span class="mono-pill">Telethon</span>
+                            <span class="mono-pill">HTTPX</span>
+                            <span class="mono-pill">BeautifulSoup4</span>
+                            <span class="mono-pill">Clean Architecture</span>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <!-- Education Section -->
-            <section id="education" class="section">
-                <h3 data-pt="Formação Acadêmica" data-en="Education">Formação Acadêmica</h3>
-                <div class="cards-grid">
-                    <article class="card">
-                        <h4 data-pt="Bacharelado em Ciências da Computação" data-en="Bachelor's in Computer Science">
-                            Bacharelado em Ciências da Computação</h4>
-                        <p class="card-meta">UNIGRANDE</p>
-                        <div class="card-meta card-meta-accent" data-pt="2025 - Cursando" data-en="2025 - In Progress">
-                            2025 - Cursando</div>
-                    </article>
+            <!-- FORMAÇÃO ACADÊMICA & IDIOMAS -->
+            <section id="education" class="section-block">
+                <div class="section-heading">
+                    <h2 class="section-title" data-pt="Formação & Idiomas" data-en="Education & Languages">Formação & Idiomas</h2>
+                    <div class="heading-line"></div>
+                </div>
 
-                    <article class="card">
-                        <h4 data-pt="Tecnólogo em Análise e Desenvolvimento de Sistemas"
-                            data-en="Technologist in Systems Analysis and Development">Tecnólogo em Análise e
-                            Desenvolvimento de Sistemas</h4>
-                        <p class="card-meta">UNIATENEU</p>
-                        <div class="card-meta card-meta-accent" data-pt="2021 - Trancado" data-en="2021 - Suspended">
-                            2021 - Trancado</div>
-                    </article>
+                <div class="education-clean-grid">
+                    <div class="education-item">
+                        <h3 class="education-course" data-pt="Bacharelado em Ciências da Computação" data-en="Bachelor's in Computer Science">
+                            Bacharelado em Ciências da Computação
+                        </h3>
+                        <div class="education-place">UNIGRANDE</div>
+                        <div class="education-badge" data-pt="2025 — Cursando" data-en="2025 — In Progress">2025 — Cursando</div>
+                    </div>
 
-                    <article class="card">
-                        <h4 data-pt="Idiomas" data-en="Languages">Idiomas</h4>
-                        <p class="card-meta"><strong data-pt="Português" data-en="Portuguese">Português</strong> - <span
-                                data-pt="Nativo" data-en="Native">Nativo</span></p>
-                        <p class="card-meta"><strong data-pt="Inglês" data-en="English">Inglês</strong> - <span
-                                data-pt="Intermediário (fluência técnica)"
-                                data-en="Intermediate (technical fluency)">Intermediário (fluência técnica)</span></p>
-                    </article>
+                    <div class="education-item">
+                        <h3 class="education-course" data-pt="Análise e Desenv. de Sistemas" data-en="Systems Analysis & Development">
+                            Análise e Desenv. de Sistemas
+                        </h3>
+                        <div class="education-place">UNIATENEU</div>
+                        <div class="education-badge" style="opacity: 0.6;" data-pt="2021 — Trancado" data-en="2021 — Paused">2021 — Trancado</div>
+                    </div>
 
-                    <article class="card">
-                        <h4 data-pt="Estudante de Inglês da Times" data-en="English student at Times">Estudante de
-                            Inglês da Times</h4>
-                        <p class="card-meta">Times</p>
-                        <div class="card-meta card-meta-accent" data-pt="2025 - Cursando" data-en="2025 - In Progress">
-                            2026 - Cursando</div>
-                    </article>
+                    <div class="education-item">
+                        <h3 class="education-course" data-pt="Idiomas & Comunicação" data-en="Languages & Fluency">
+                            Idiomas & Comunicação
+                        </h3>
+                        <div class="education-place">Times Idiomas & Autodidata</div>
+                        <div class="education-badge" data-pt="Português Nativo | Inglês Técnico Avançado" data-en="Native Portuguese | Fluent Tech English">
+                            Português Nativo | Inglês Técnico
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Projects Section -->
-            <section id="projects" class="section">
-                <h3 data-pt="Projetos e Sistemas" data-en="Projects & Systems"><i class="bi bi-cpu-fill" style="color: var(--cyan-primary);"></i> <span data-pt="Projetos e Sistemas" data-en="Projects & Systems">Projetos e Sistemas</span></h3>
+            <!-- FOOTER -->
+            <footer class="site-footer">
+                <div>
+                    © <span id="currentYear"></span> Guilherme Oliveira. 
+                    <span data-pt="Engenharia de software com foco em arquitetura limpa." data-en="Software engineering with clean architecture focus.">
+                        Engenharia de software com foco em arquitetura limpa.
+                    </span>
+                </div>
+                <div>
+                    <a href="#about" class="back-top-link" title="Voltar ao início">
+                        <i class="bi bi-arrow-up"></i> <span data-pt="Voltar ao topo" data-en="Back to top">Voltar ao topo</span>
+                    </a>
+                </div>
+            </footer>
 
-                <!-- JUSGROWTH SAAS CRM PARA ADVOGADOS - PROJETO DESTAQUE PRINCIPAL / FLAGSHIP HERO -->
-                <article class="project-card flagship-card">
-                    <div class="flagship-top-bar">
-                        <div class="flagship-badge">
-                            <span class="pulsing-star"><i class="bi bi-star-fill"></i></span>
-                            <span data-pt="PROJETO DESTAQUE // FLAGSHIP SAAS" data-en="FEATURED PROJECT // FLAGSHIP SAAS">PROJETO DESTAQUE // FLAGSHIP SAAS</span>
-                        </div>
-                        <span class="status-badge production">
-                            <span class="pulsing-dot"></span>
-                            <span data-pt="Em Produção & Online" data-en="Production & Online">Em Produção & Online</span>
-                        </span>
-                    </div>
-
-                    <div class="project-header">
-                        <div class="project-title-area">
-                            <h4 class="project-title flagship-title">
-                                <span class="cyber-gradient-text">JusGrowth</span>
-                                <span class="title-sub" data-pt="SaaS CRM & Atendimento para Advogados" data-en="Legal CRM & Multi-Channel SaaS">SaaS CRM & Atendimento para Advogados</span>
-                            </h4>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://jusgrowth.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <i class="bi bi-globe"></i> <span data-pt="Acessar Plataforma" data-en="Live Site">Acessar Plataforma</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <p class="project-desc flagship-desc"
-                        data-pt="Plataforma SaaS CRM de alta performance desenvolvida especificamente para escritórios de advocacia e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de prospecção e casos jurídicos, atribuição closed-loop de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração de processos com Advbox, pagamentos recorrentes e assistente de IA em conformidade com o Provimento OAB 205/2021."
-                        data-en="High-performance Legal SaaS CRM platform engineered specifically for law firms and solo attorneys. Integrates real-time multi-agent WhatsApp messaging via WebSockets, visual Kanban sales and case management pipeline, closed-loop campaign ROI attribution via Meta Ads Insights, automated contract generation and ZapSign e-signatures, Advbox court case tracking integration, subscription payments, and AI assistance compliant with OAB Regulation 205/2021.">
-                        Plataforma SaaS CRM de alta performance desenvolvida especificamente para escritórios de advocacia e advogados autônomos. Integra motor de WhatsApp multi-atendente em tempo real via WebSockets, funil Kanban de prospecção e casos jurídicos, atribuição closed-loop de ROI por campanha via Meta Ads Insights, geração e assinatura digital de contratos via ZapSign, integração de processos com Advbox, pagamentos recorrentes e assistente de IA em conformidade com o Provimento OAB 205/2021.</p>
-
-                    <div class="flagship-features-grid">
-                        <div class="flagship-feature-box">
-                            <div class="feature-icon"><i class="bi bi-kanban-fill"></i></div>
-                            <div class="feature-info">
-                                <h6 data-pt="CRM Kanban & Funil Jurídico" data-en="Kanban CRM & Legal Pipeline">CRM Kanban & Funil Jurídico</h6>
-                                <p data-pt="Gestão visual de leads, prospecção e novos casos em tempo real." data-en="Real-time visual lead and legal case management pipeline.">Gestão visual de leads, prospecção e novos casos em tempo real.</p>
-                            </div>
-                        </div>
-                        <div class="flagship-feature-box">
-                            <div class="feature-icon"><i class="bi bi-whatsapp"></i></div>
-                            <div class="feature-info">
-                                <h6 data-pt="WhatsApp Multi-Atendente" data-en="Multi-Agent WhatsApp Engine">WhatsApp Multi-Atendente</h6>
-                                <p data-pt="Atendimento centralizado para múltiplos advogados via WebSockets." data-en="Centralized multi-lawyer messaging synced via WebSockets.">Atendimento centralizado para múltiplos advogados via WebSockets.</p>
-                            </div>
-                        </div>
-                        <div class="flagship-feature-box">
-                            <div class="feature-icon"><i class="bi bi-file-earmark-check-fill"></i></div>
-                            <div class="feature-info">
-                                <h6 data-pt="Meta Ads & ZapSign Integrados" data-en="Meta Ads & ZapSign Integrations">Meta Ads & ZapSign Integrados</h6>
-                                <p data-pt="Atribuição de ROI por campanha e assinatura digital no chat." data-en="Closed-loop campaign ROI and direct in-chat e-signatures.">Atribuição de ROI por campanha e assinatura digital no chat.</p>
-                            </div>
-                        </div>
-                        <div class="flagship-feature-box">
-                            <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
-                            <div class="feature-info">
-                                <h6 data-pt="IA Assistiva & OAB Compliance" data-en="AI Assistant & OAB Compliance">IA Assistiva & OAB Compliance</h6>
-                                <p data-pt="Triagem jurídica inteligente sob o Provimento OAB 205/2021." data-en="Smart legal screening fully compliant with OAB regulations.">Triagem jurídica inteligente sob o Provimento OAB 205/2021.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-tags flagship-tags">
-                        <span class="tag">Next.js 15</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">Node.js / Express</span>
-                        <span class="tag">WhatsApp API</span>
-                        <span class="tag">WebSockets</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Prisma ORM</span>
-                        <span class="tag">Meta Ads API</span>
-                        <span class="tag">ZapSign</span>
-                        <span class="tag">Tailwind CSS 4</span>
-                    </div>
-                </article>
-
-                <h4 class="project-subtitle" data-pt="Outros Sistemas em Produção & Online"
-                    data-en="Other Production & Online Systems"><i class="bi bi-layers-fill" style="color: var(--amber-primary);"></i> <span data-pt="Outros Sistemas em Produção & Online" data-en="Other Production & Online Systems">Outros Sistemas em Produção & Online</span></h4>
-
-                <!-- Axivon SaaS -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <div class="project-title-area">
-                            <h4 class="project-title">Axivon</h4>
-                            <span class="status-badge production">
-                                <span class="pulsing-dot"></span>
-                                <span data-pt="Em Produção" data-en="Production">Em Produção</span>
-                            </span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/guilherme-0liveira-dev/" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <i class="bi bi-rocket-takeoff-fill"></i> <span data-pt="Ver Arquitetura" data-en="View Architecture">Ver Arquitetura</span>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-desc"
-                        data-pt="Plataforma SaaS Multi-Tenant de alta performance projetada para gestão de agendamentos e automação de atendimentos. Conta com arquitetura escalável de microsserviços com isolamento por tenancy, confirmações e lembretes inteligentes via WhatsApp/Telegram, motor de concorrência de horários em tempo real via WebSockets e dashboard analítico."
-                        data-en="High-performance Multi-Tenant SaaS platform designed for appointment scheduling and service workflow automation. Features scalable microservices architecture with tenant data isolation, WhatsApp/Telegram automated reminders, real-time WebSockets concurrency engine, and an analytics dashboard.">
-                        Plataforma SaaS Multi-Tenant de alta performance projetada para gestão de agendamentos e automação de atendimentos. Conta com arquitetura escalável de microsserviços com isolamento por tenancy, confirmações e lembretes inteligentes via WhatsApp/Telegram, motor de concorrência de horários em tempo real via WebSockets e dashboard analítico.</p>
-                    <div class="card-tags">
-                        <span class="tag">Next.js 15</span>
-                        <span class="tag">React 19</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Prisma ORM</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">WebSockets</span>
-                        <span class="tag">Docker</span>
-                    </div>
-                </article>
-
-                <!-- BetBot Pro -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <div class="project-title-area">
-                            <h4 class="project-title">BetBot Pro</h4>
-                            <span class="status-badge online">
-                                <span class="pulsing-dot"></span>
-                                <span data-pt="Em Produção" data-en="Production">Em Produção</span>
-                            </span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://betbotting.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                class="project-link">
-                                <i class="bi bi-globe"></i> <span data-pt="Acessar" data-en="Live Site">Acessar</span>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-desc"
-                        data-pt="Plataforma de automação esportiva de alta performance integrada ao Telegram. O sistema captura tips em tempo real usando a biblioteca Telethon, interpreta as mensagens utilizando técnicas de NLP e expressões regulares (RegEx) para extrair os mercados, eventos e odds, e executa as apostas de forma automática na Bet365 simulando comportamento humano com Playwright Stealth para contornar proteções."
-                        data-en="High-performance sports automation platform integrated with Telegram. The system captures tips in real time using the Telethon library, interprets messages using NLP techniques and regular expressions (RegEx) to extract markets, events, and odds, and executes bets automatically on Bet365 simulating human behavior with Playwright Stealth to bypass protections.">
-                        Plataforma de automação esportiva de alta performance integrada ao Telegram. O sistema captura
-                        tips em tempo real usando a biblioteca Telethon, interpreta as mensagens utilizando técnicas de
-                        NLP e expressões regulares (RegEx) para extrair os mercados, eventos e odds, e executa as
-                        apostas de forma automática na Bet365 simulando comportamento humano com Playwright Stealth para
-                        contornar proteções.</p>
-                    <div class="card-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Playwright Stealth</span>
-                        <span class="tag">Telethon</span>
-                        <span class="tag">React</span>
-                        <span class="tag">Vite</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">arq</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Uvicorn</span>
-                    </div>
-                </article>
-
-                <!-- Roulette Analytics Pro -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <div class="project-title-area">
-                            <h4 class="project-title">Roulette Analytics Pro</h4>
-                            <span class="status-badge online">
-                                <span class="pulsing-dot"></span>
-                                <span data-pt="Online" data-en="Online">Online</span>
-                            </span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://blackcard-roulette.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                class="project-link">
-                                <i class="bi bi-globe"></i> <span data-pt="Acessar" data-en="Live Site">Acessar</span>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-desc"
-                        data-pt="Plataforma analítica avançada e monitoramento estatístico em tempo real de até 7 roletas online simultaneamente. Possui regras de negócio dinâmicas e triggers customizáveis, conexões persistentes via WebSockets com padrão subscribe/unsubscribe, fila de tarefas assíncronas assente em Celery, painel Next.js 14 profissional com suporte nativo a dark mode, e uma suite robusta de observabilidade e healthcheck de microsserviços."
-                        data-en="Advanced analytical platform and real-time statistical monitoring of up to 7 online roulettes simultaneously. It features dynamic business rules and customizable triggers, persistent connections via WebSockets with subscribe/unsubscribe patterns, a Celery-based async task queue, a professional Next.js 14 dashboard with native dark mode, and a robust microservices observability and health check suite.">
-                        Plataforma analítica avançada e monitoramento estatístico em tempo real de até 7 roletas online
-                        simultaneamente. Possui regras de negócio dinâmicas e triggers customizáveis, conexões
-                        persistentes via WebSockets com padrão subscribe/unsubscribe, fila de tarefas assíncronas
-                        assente em Celery, painel Next.js 14 profissional com suporte nativo a dark mode, e uma suite
-                        robusta de observabilidade e healthcheck de microsserviços.</p>
-                    <div class="card-tags">
-                        <span class="tag">Next.js 14</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">WebSockets</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">Celery</span>
-                        <span class="tag">Nginx</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Tailwind CSS</span>
-                    </div>
-                </article>
-
-                <!-- Affiliate Promo Bot -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <div class="project-title-area">
-                            <h4 class="project-title">Affiliate Promo Bot</h4>
-                            <span class="status-badge production">
-                                <span class="pulsing-dot"></span>
-                                <span data-pt="Em Produção" data-en="Production">Em Produção</span>
-                            </span>
-                        </div>
-                        <!-- Repositório Privado -->
-                    </div>
-                    <p class="project-desc"
-                        data-pt="Sistema profissional automatizado para monitoramento de promoções de e-commerces (Amazon, Mercado Livre, Shopee). Inclui conversor inteligente de links de afiliados, motor de pontuação heurístico (scoring engine 0-100) acoplado a um classificador estatístico de IA leve para classificar ofertas como 'IMPERDÍVEL', disparos formatados para Telegram com botões interativos inline, e dashboard administrativo Streamlit com métricas detalhadas de cliques e CTR."
-                        data-en="Professional automated system for monitoring e-commerce promotions (Amazon, Mercado Livre, Shopee). It includes an intelligent affiliate link converter, a heuristic scoring engine (0-100) coupled with a lightweight statistical AI classifier to badge deals as 'MUST-HAVE', formatted broadcasts to Telegram with interactive inline buttons, and a Streamlit admin dashboard with detailed click and CTR metrics.">
-                        Sistema profissional automatizado para monitoramento de promoções de e-commerces (Amazon,
-                        Mercado Livre, Shopee). Inclui conversor inteligente de links de afiliados, motor de pontuação
-                        heurístico (scoring engine 0-100) acoplado a um classificador estatístico de IA leve para
-                        classificar ofertas como 'IMPERDÍVEL', disparos formatados para Telegram com botões interativos
-                        inline, e dashboard administrativo Streamlit com métricas detalhadas de cliques e CTR.</p>
-                    <div class="card-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Next.js 15</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">BeautifulSoup</span>
-                        <span class="tag">HTTPX</span>
-                        <span class="tag">APScheduler</span>
-                        <span class="tag">Docker</span>
-                    </div>
-                </article>
-
-                <h4 class="project-subtitle" data-pt="APIs & Utilitários" data-en="APIs & Utilities"
-                    style="margin-top: 3.5rem;">APIs & Utilitários</h4>
-
-                <!-- API de Rastreio -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h4 class="project-title">API de Rastreio</h4>
-                        <div class="project-links">
-                            <a href="https://github.com/guilherme-0liveira-dev/Rastreamento_API" target="_blank"
-                                rel="noopener noreferrer" class="project-link">
-                                <i class="bi bi-github"></i> <span>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-desc"
-                        data-pt="Uma aplicação web completa para rastreamento de encomendas dos Correios, construída com Next.js 15 e tecnologia moderna. Este sistema implementa múltiplas fontes de dados dos Correios para fornecer informações em tempo real sobre o status de pacotes e correspondências."
-                        data-en="A complete web application for tracking postal service parcels, built with Next.js 15 and modern technology. This system implements multiple data sources from the postal service to provide real-time information on the status of packages and mail.">
-                        Uma aplicação web completa para rastreamento de encomendas dos Correios, construída com Next.js
-                        15 e tecnologia moderna. Este sistema implementa múltiplas fontes de dados dos Correios para
-                        fornecer informações em tempo real sobre o status de pacotes e correspondências.</p>
-                    <div class="card-tags">
-                        <span class="tag">Next.js</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">Tailwind CSS 4</span>
-                        <span class="tag">shadcn/ui</span>
-                        <span class="tag">API Routes</span>
-                        <span class="tag">CORS</span>
-                    </div>
-                </article>
-
-                <!-- CRUD de Gestão de Produtos -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h4 class="project-title">CRUD de Gestão de Produtos</h4>
-                        <div class="project-links">
-                            <a href="https://github.com/guilherme-0liveira-dev/CRUD-Completo/tree/develop"
-                                target="_blank" rel="noopener noreferrer" class="project-link">
-                                <i class="bi bi-github"></i> <span>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-desc"
-                        data-pt="Este é um sistema completo para gestão de estoque, pedidos e usuários, desenvolvido com foco em performance, segurança e escalabilidade."
-                        data-en="This is a complete system for managing inventory, orders, and users, developed with a focus on performance, security, and scalability.">
-                        Este é um sistema completo para gestão de estoque, pedidos e usuários, desenvolvido com foco em
-                        desempenho, segurança e escalabilidade.</p>
-                    <div class="card-tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express 5</span>
-                        <span class="tag">Prisma</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Zod</span>
-                        <span class="tag">Swagger/OpenAPI</span>
-                        <span class="tag">JWT</span>
-                        <span class="tag">Bcryptjs</span>
-                        <span class="tag">Jest/Supertest</span>
-                        <span class="tag">Next.js</span>
-                        <span class="tag">Tailwind CSS</span>
-                        <span class="tag">Lucide React</span>
-                    </div>
-                </article>
-
-                <!-- API de Despesas -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <h4 class="project-title">API de Despesas</h4>
-                        <div class="project-links">
-                            <a href="https://github.com/guilherme-0liveira-dev/Api-Despesas" target="_blank"
-                                rel="noopener noreferrer" class="project-link">
-                                <i class="bi bi-github"></i> <span>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-desc"
-                        data-pt="API RESTful desenvolvida em PHP com framework Yii2 para gerenciamento de despesas pessoais com autenticação e endpoints completos."
-                        data-en="RESTful API developed in PHP with Yii2 framework for personal expense management with authentication and complete endpoints.">
-                        API RESTful desenvolvida em PHP com framework Yii2 para gerenciamento de despesas pessoais com
-                        autenticação e endpoints completos.</p>
-                    <div class="card-tags">
-                        <span class="tag">PHP</span>
-                        <span class="tag">Yii2</span>
-                        <span class="tag">REST API</span>
-                        <span class="tag">MySQL</span>
-                    </div>
-                </article>
-            </section>
         </main>
     </div>
 
+    <!-- SCRIPT DE INTERATIVIDADE, TEMA E IDIOMA -->
     <script>
         class PortfolioApp {
             constructor() {
-                this.navLinks = document.querySelectorAll('.sidebar-nav a');
-                this.sections = document.querySelectorAll('.section');
                 this.themeToggle = document.getElementById('themeToggle');
+                this.themeIcon = document.getElementById('themeIcon');
                 this.langToggle = document.getElementById('langToggle');
-                this.currentLang = localStorage.getItem('language') || 'pt';
+                this.langLabel = document.getElementById('langLabel');
+                this.cvBtn = document.getElementById('cvBtn');
+                this.navAnchors = document.querySelectorAll('.nav-anchor');
+                this.sections = document.querySelectorAll('.section-block');
+                
+                this.currentLang = localStorage.getItem('portfolio_lang') || 'pt';
+                this.isDark = localStorage.getItem('portfolio_theme') !== 'light';
+
                 this.init();
             }
 
             init() {
-                this.setupNavigation();
-                this.setupTheme();
-                this.setupLanguage();
-                this.applyLanguage();
+                this.setupYear();
+                this.applyTheme(this.isDark);
+                this.applyLanguage(this.currentLang);
+                this.setupEventListeners();
+                this.setupScrollspy();
             }
 
-            setupNavigation() {
-                this.navLinks.forEach(link => {
-                    link.addEventListener('click', (e) => {
+            setupYear() {
+                const yearEl = document.getElementById('currentYear');
+                if (yearEl) yearEl.textContent = new Date().getFullYear();
+            }
+
+            setupEventListeners() {
+                // Theme Toggle (Dark / Light Monocromático)
+                this.themeToggle.addEventListener('click', () => {
+                    this.isDark = !this.isDark;
+                    this.applyTheme(this.isDark);
+                    localStorage.setItem('portfolio_theme', this.isDark ? 'dark' : 'light');
+                });
+
+                // Language Toggle (PT / EN)
+                this.langToggle.addEventListener('click', () => {
+                    this.currentLang = this.currentLang === 'pt' ? 'en' : 'pt';
+                    this.applyLanguage(this.currentLang);
+                    localStorage.setItem('portfolio_lang', this.currentLang);
+                });
+
+                // Smooth Scroll ao clicar nos links da sidebar
+                this.navAnchors.forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
                         e.preventDefault();
-                        const sectionId = link.getAttribute('data-section');
-                        this.showSection(sectionId);
-                        this.updateActiveNav(link);
+                        const targetId = anchor.getAttribute('href').substring(1);
+                        const targetEl = document.getElementById(targetId);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                     });
                 });
             }
 
-            showSection(sectionId) {
-                this.sections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(sectionId).classList.add('active');
-            }
-
-            updateActiveNav(activeLink) {
-                this.navLinks.forEach(link => link.classList.remove('active'));
-                activeLink.classList.add('active');
-            }
-
-            setupTheme() {
-                const savedTheme = localStorage.getItem('darkMode');
-                const isDarkMode = savedTheme === null ? true : savedTheme === 'true';
-                if (isDarkMode) {
+            applyTheme(isDark) {
+                if (isDark) {
                     document.body.classList.add('dark-mode');
+                    this.themeIcon.className = 'bi bi-moon-fill';
                 } else {
                     document.body.classList.remove('dark-mode');
+                    this.themeIcon.className = 'bi bi-sun-fill';
                 }
-                this.updateThemeIcon();
-
-                this.themeToggle.addEventListener('click', () => {
-                    document.body.classList.toggle('dark-mode');
-                    const isDark = document.body.classList.contains('dark-mode');
-                    localStorage.setItem('darkMode', isDark);
-                    this.updateThemeIcon();
-                });
             }
 
-            updateThemeIcon() {
-                const isDark = document.body.classList.contains('dark-mode');
-                this.themeToggle.innerHTML = isDark ? '<i class="bi bi-brightness-high-fill"></i>' : '<i class="bi bi-moon-fill"></i>';
-            }
-
-            setupLanguage() {
-                this.langToggle.addEventListener('click', () => {
-                    this.currentLang = this.currentLang === 'pt' ? 'en' : 'pt';
-                    localStorage.setItem('language', this.currentLang);
-                    this.applyLanguage();
-                });
-            }
-
-            applyLanguage() {
-                const attribute = `data-${this.currentLang}`;
-                document.querySelectorAll('[data-pt][data-en]').forEach(element => {
-                    if (element.getAttribute(attribute)) {
-                        element.textContent = element.getAttribute(attribute);
+            applyLanguage(lang) {
+                this.langLabel.textContent = lang === 'pt' ? 'EN' : 'PT';
+                
+                document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+                    const content = el.getAttribute(`data-${lang}`);
+                    if (content) {
+                        if (content.includes('<') && content.includes('>')) {
+                            el.innerHTML = content;
+                        } else {
+                            el.textContent = content;
+                        }
                     }
                 });
 
-                const cvBtn = document.getElementById('cvBtn');
-                if (cvBtn) {
-                    cvBtn.href = this.currentLang === 'en'
+                if (this.cvBtn) {
+                    this.cvBtn.href = lang === 'en'
                         ? 'assets/Guilherme-Oliveira_Software-Engineer-en.pdf'
                         : 'assets/Guilherme-Oliveira_Software-Engineer-pt.pdf';
                 }
+            }
+
+            setupScrollspy() {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '-20% 0px -60% 0px',
+                    threshold: 0
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            this.navAnchors.forEach(link => {
+                                if (link.getAttribute('data-nav') === id) {
+                                    link.classList.add('active');
+                                } else {
+                                    link.classList.remove('active');
+                                }
+                            });
+                        }
+                    });
+                }, observerOptions);
+
+                this.sections.forEach(sec => observer.observe(sec));
             }
         }
 
